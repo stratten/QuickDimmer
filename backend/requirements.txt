@@ -1,0 +1,28 @@
+# QuickDimmer Backend Dependencies
+# 
+# This file specifies all Python packages required for the QuickDimmer backend
+# Install with: pip install -r requirements.txt
+
+# Core HTTP/WebSocket server for frontend communication
+aiohttp>=3.9.0,<4.0.0
+
+# macOS native integration for display management and window detection
+pyobjc-framework-Cocoa>=10.0,<11.0
+
+# Additional PyObjC framework for system integration
+pyobjc-framework-Quartz>=10.0,<11.0
+
+# Core PyObjC runtime (usually installed automatically with framework packages)
+pyobjc-core>=10.0,<11.0
+
+# Optional: Enhanced JSON handling (aiohttp dependency, but explicit for clarity)
+multidict>=6.0.0
+
+# Optional: Better async HTTP client capabilities
+aiofiles>=23.0.0
+
+# Development and testing dependencies (optional, uncomment if needed)
+# pytest>=7.0.0
+# pytest-asyncio>=0.21.0
+# black>=23.0.0
+# flake8>=6.0.0 

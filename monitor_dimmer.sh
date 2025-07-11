@@ -5,7 +5,7 @@
 # No interference with existing applications - creates dedicated overlay windows
 
 # Configuration
-OVERLAY_OPACITY=0.7     # 0.7 = 70% dark overlay to achieve 30% effective brightness
+OVERLAY_OPACITY=0.83     # 0.83 = 83% dark overlay to achieve 17% effective brightness
 CHECK_INTERVAL=1        # seconds between checks
 
 # Function to get the currently focused application and window
@@ -284,6 +284,7 @@ window.setBackgroundColor_(NSColor.blackColor())  # Black background
 window.setIgnoresMouseEvents_(True)  # Click-through!
 window.setAcceptsMouseMovedEvents_(False)
 window.setHasShadow_(False)
+window.setCollectionBehavior_(NSWindowCollectionBehaviorCanJoinAllSpaces)  # Persist across all desktop spaces
 
 # Show window
 window.makeKeyAndOrderFront_(None)

@@ -1,987 +1,386 @@
-  Available displays:
-    Display 1: 2056.0x1329.0 at (0.0,0.0)
-    Display 4: 2560.0x1440.0 at (-504.0,1329.0)
-    Display 5: 1440.0x2560.0 at (2056.0,352.0)
-🔍 Display scan complete. Found display IDs: [1, 4, 5]
-✅ Found displays: 1 4 5
+strattenwaldt@HONOR-X6 MonitorDimmer % ./run.sh
+======================================
+     MonitorDimmer Application        
+======================================
+Checking prerequisites...
+✓ All prerequisites found
 
-🚀 Starting in 3 seconds...
-🔍 Scanning for available displays using Cocoa...
-  Available displays:
-    Display 1: 2056.0x1329.0 at (0.0,0.0)
-    Display 4: 2560.0x1440.0 at (-504.0,1329.0)
-    Display 5: 1440.0x2560.0 at (2056.0,352.0)
-🔍 Display scan complete. Found display IDs: [1, 4, 5]
-=================== AUTO MONITOR DIMMER ===================
-Found 3 total displays
-Available displays: 1 4 5
-Focused display stays clear, others dimmed to 30% brightness
-Native Cocoa overlays - no app interference, click-through enabled
-Press Ctrl+C to stop and remove all overlays
-===========================================================
-DEBUG: Testing coordinates (20, 44) for app: Terminal
-DEBUG: Testing point (20, 44) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Point (20, 44) is inside display 1
-DEBUG: Detected display: 1
+Clearing Python cache files...
+✓ Python cache cleared
 
-15:44:27 - Focus changed: Terminal on display 1 (window at 20,44)
-🔆 Display 1: FOCUSED - removing overlay
-🔅 Display 4: unfocused - creating overlay
-Creating overlay on display 4
-  Display 4 coordinates: x=-504, y=1329, size=2560x1440
-✓ Successfully created overlay on display 4
-🔅 Display 5: unfocused - creating overlay
-Creating overlay on display 5
-  Display 5 coordinates: x=2056, y=352, size=1440x2560
-✓ Successfully created overlay on display 5
-DEBUG: Testing coordinates (20, 44) for app: Terminal
-DEBUG: Testing point (20, 44) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Point (20, 44) is inside display 1
-DEBUG: Detected display: 1
-DEBUG: Testing coordinates (-504, -1440) for app: Python
-DEBUG: Testing point (-504, -1440) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Display 5: bounds=(2056.0, 352.0) to (3496.0, 2912.0)
-DEBUG: Point (-504, -1440) not found in any display, defaulting to 1
-DEBUG: Detected display: 1
-DEBUG: Testing coordinates (20, 44) for app: Terminal
-DEBUG: Testing point (20, 44) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Point (20, 44) is inside display 1
-DEBUG: Detected display: 1
-DEBUG: Testing coordinates (20, 44) for app: Terminal
-DEBUG: Testing point (20, 44) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Point (20, 44) is inside display 1
-DEBUG: Detected display: 1
-DEBUG: Testing coordinates (20, 44) for app: Terminal
-DEBUG: Testing point (20, 44) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Point (20, 44) is inside display 1
-DEBUG: Detected display: 1
-DEBUG: Testing coordinates (-504, -1415) for app: Cursor
-DEBUG: Testing point (-504, -1415) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Display 5: bounds=(2056.0, 352.0) to (3496.0, 2912.0)
-DEBUG: Point (-504, -1415) not found in any display, defaulting to 1
-DEBUG: Detected display: 1
-DEBUG: Testing coordinates (-504, -1415) for app: Cursor
-DEBUG: Testing point (-504, -1415) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Display 5: bounds=(2056.0, 352.0) to (3496.0, 2912.0)
-DEBUG: Point (-504, -1415) not found in any display, defaulting to 1
-DEBUG: Detected display: 1
-DEBUG: Testing coordinates (-504, -1415) for app: Cursor
-DEBUG: Testing point (-504, -1415) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Display 5: bounds=(2056.0, 352.0) to (3496.0, 2912.0)
-DEBUG: Point (-504, -1415) not found in any display, defaulting to 1
-DEBUG: Detected display: 1
-DEBUG: Testing coordinates (-504, -1415) for app: Cursor
-DEBUG: Testing point (-504, -1415) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Display 5: bounds=(2056.0, 352.0) to (3496.0, 2912.0)
-DEBUG: Point (-504, -1415) not found in any display, defaulting to 1
-DEBUG: Detected display: 1
-DEBUG: Testing coordinates (-504, -1415) for app: Cursor
-DEBUG: Testing point (-504, -1415) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Display 5: bounds=(2056.0, 352.0) to (3496.0, 2912.0)
-DEBUG: Point (-504, -1415) not found in any display, defaulting to 1
-DEBUG: Detected display: 1
-DEBUG: Testing coordinates (-504, -1415) for app: Cursor
-DEBUG: Testing point (-504, -1415) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Display 5: bounds=(2056.0, 352.0) to (3496.0, 2912.0)
-DEBUG: Point (-504, -1415) not found in any display, defaulting to 1
-DEBUG: Detected display: 1
-DEBUG: Testing coordinates (20, 44) for app: Terminal
-DEBUG: Testing point (20, 44) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Point (20, 44) is inside display 1
-DEBUG: Detected display: 1
-DEBUG: Testing coordinates (-504, -1415) for app: Cursor
-DEBUG: Testing point (-504, -1415) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Display 5: bounds=(2056.0, 352.0) to (3496.0, 2912.0)
-DEBUG: Point (-504, -1415) not found in any display, defaulting to 1
-DEBUG: Detected display: 1
-DEBUG: Testing coordinates (-504, -1415) for app: Cursor
-DEBUG: Testing point (-504, -1415) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Display 5: bounds=(2056.0, 352.0) to (3496.0, 2912.0)
-DEBUG: Point (-504, -1415) not found in any display, defaulting to 1
-DEBUG: Detected display: 1
-DEBUG: Testing coordinates (-504, -1415) for app: Cursor
-DEBUG: Testing point (-504, -1415) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Display 5: bounds=(2056.0, 352.0) to (3496.0, 2912.0)
-DEBUG: Point (-504, -1415) not found in any display, defaulting to 1
-DEBUG: Detected display: 1
-DEBUG: Testing coordinates (-504, -1415) for app: Cursor
-DEBUG: Testing point (-504, -1415) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Display 5: bounds=(2056.0, 352.0) to (3496.0, 2912.0)
-DEBUG: Point (-504, -1415) not found in any display, defaulting to 1
-DEBUG: Detected display: 1
-DEBUG: Testing coordinates (-504, -1415) for app: Cursor
-DEBUG: Testing point (-504, -1415) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Display 5: bounds=(2056.0, 352.0) to (3496.0, 2912.0)
-DEBUG: Point (-504, -1415) not found in any display, defaulting to 1
-DEBUG: Detected display: 1
-DEBUG: Testing coordinates (-504, -1415) for app: Cursor
-DEBUG: Testing point (-504, -1415) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Display 5: bounds=(2056.0, 352.0) to (3496.0, 2912.0)
-DEBUG: Point (-504, -1415) not found in any display, defaulting to 1
-DEBUG: Detected display: 1
-DEBUG: Testing coordinates (-504, -1415) for app: Cursor
-DEBUG: Testing point (-504, -1415) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Display 5: bounds=(2056.0, 352.0) to (3496.0, 2912.0)
-DEBUG: Point (-504, -1415) not found in any display, defaulting to 1
-DEBUG: Detected display: 1
-DEBUG: Testing coordinates (20, 44) for app: Terminal
-DEBUG: Testing point (20, 44) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Point (20, 44) is inside display 1
-DEBUG: Detected display: 1
-DEBUG: Testing coordinates (20, 44) for app: Terminal
-DEBUG: Testing point (20, 44) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Point (20, 44) is inside display 1
-DEBUG: Detected display: 1
-DEBUG: Testing coordinates (20, 44) for app: Terminal
-DEBUG: Testing point (20, 44) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Point (20, 44) is inside display 1
-DEBUG: Detected display: 1
-^C
-🛑 Stopping monitor dimmer...
+Finding available port for backend...
+✓ Found available port: 8080
 
-🔄 Removing all overlays...
-Removing all overlays...
-✓ All overlays removed
-✅ All displays restored to normal
-strattenwaldt@HONOR-X6 MonitorDimmer % ./monitor_dimmer.sh
-Checking dependencies...
-✅ PyObjC found - native overlay windows enabled
-✅ m1ddc found - will be used for display enumeration
-✅ Dependencies checked
+Setting up Python backend...
+Installing Python dependencies...
+Installing dependencies from lock file
 
-Testing display detection...
-🔍 Scanning for available displays using Cocoa...
-  Available displays:
-    Display 1: 2056.0x1329.0 at (0.0,0.0)
-    Display 4: 2560.0x1440.0 at (-504.0,1329.0)
-    Display 5: 1440.0x2560.0 at (2056.0,352.0)
-🔍 Display scan complete. Found display IDs: [1, 4, 5]
-✅ Found displays: 1 4 5
+No dependencies to install or update
+The following packages are already present in the pyproject.toml and will be skipped:
 
-🚀 Starting in 3 seconds...
-🔍 Scanning for available displays using Cocoa...
-  Available displays:
-    Display 1: 2056.0x1329.0 at (0.0,0.0)
-    Display 4: 2560.0x1440.0 at (-504.0,1329.0)
-    Display 5: 1440.0x2560.0 at (2056.0,352.0)
-🔍 Display scan complete. Found display IDs: [1, 4, 5]
-=================== AUTO MONITOR DIMMER ===================
-Found 3 total displays
-Available displays: 1 4 5
-Focused display stays clear, others dimmed to 30% brightness
-Native Cocoa overlays - no app interference, click-through enabled
-Press Ctrl+C to stop and remove all overlays
-===========================================================
-DEBUG: Testing coordinates (20, 44) for app: Terminal
-DEBUG: Converted AppleScript coords (20, 44) to Cocoa coords (20, 1285.0)
-DEBUG: Testing point (20, 1285.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Point (20, 1285.0) is inside display 1
-DEBUG: Detected display: 1
+  - aiohttp
+  - pyobjc-framework-Cocoa
+  - pyobjc-framework-Quartz
+  - pyobjc-core
 
-15:45:36 - Focus changed: Terminal on display 1 (window at 20,44)
-🔆 Display 1: FOCUSED - removing overlay
-🔅 Display 4: unfocused - creating overlay
-Creating overlay on display 4
-  Display 4 coordinates: x=-504, y=1329, size=2560x1440
-✓ Successfully created overlay on display 4
-🔅 Display 5: unfocused - creating overlay
-Creating overlay on display 5
-  Display 5 coordinates: x=2056, y=352, size=1440x2560
-✓ Successfully created overlay on display 5
-DEBUG: Testing coordinates (20, 44) for app: Terminal
-DEBUG: Converted AppleScript coords (20, 44) to Cocoa coords (20, 1285.0)
-DEBUG: Testing point (20, 1285.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Point (20, 1285.0) is inside display 1
-DEBUG: Detected display: 1
-DEBUG: Testing coordinates (-504, -1440) for app: Python
-DEBUG: Converted AppleScript coords (-504, -1440) to Cocoa coords (-504, 2769.0)
-DEBUG: Testing point (-504, 2769.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Display 5: bounds=(2056.0, 352.0) to (3496.0, 2912.0)
-DEBUG: Point (-504, 2769.0) not found in any display, defaulting to 1
-DEBUG: Detected display: 1
-DEBUG: Testing coordinates (-504, -1440) for app: Python
-DEBUG: Converted AppleScript coords (-504, -1440) to Cocoa coords (-504, 2769.0)
-DEBUG: Testing point (-504, 2769.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Display 5: bounds=(2056.0, 352.0) to (3496.0, 2912.0)
-DEBUG: Point (-504, 2769.0) not found in any display, defaulting to 1
-DEBUG: Detected display: 1
-DEBUG: Testing coordinates (-504, -1440) for app: Python
-DEBUG: Converted AppleScript coords (-504, -1440) to Cocoa coords (-504, 2769.0)
-DEBUG: Testing point (-504, 2769.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Display 5: bounds=(2056.0, 352.0) to (3496.0, 2912.0)
-DEBUG: Point (-504, 2769.0) not found in any display, defaulting to 1
-DEBUG: Detected display: 1
-DEBUG: Testing coordinates (-504, -1440) for app: Python
-DEBUG: Converted AppleScript coords (-504, -1440) to Cocoa coords (-504, 2769.0)
-DEBUG: Testing point (-504, 2769.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Display 5: bounds=(2056.0, 352.0) to (3496.0, 2912.0)
-DEBUG: Point (-504, 2769.0) not found in any display, defaulting to 1
-DEBUG: Detected display: 1
-DEBUG: Testing coordinates (-504, -1440) for app: Python
-DEBUG: Converted AppleScript coords (-504, -1440) to Cocoa coords (-504, 2769.0)
-DEBUG: Testing point (-504, 2769.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Display 5: bounds=(2056.0, 352.0) to (3496.0, 2912.0)
-DEBUG: Point (-504, 2769.0) not found in any display, defaulting to 1
-DEBUG: Detected display: 1
-DEBUG: Testing coordinates (-504, -1440) for app: Python
-DEBUG: Converted AppleScript coords (-504, -1440) to Cocoa coords (-504, 2769.0)
-DEBUG: Testing point (-504, 2769.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Display 5: bounds=(2056.0, 352.0) to (3496.0, 2912.0)
-DEBUG: Point (-504, 2769.0) not found in any display, defaulting to 1
-DEBUG: Detected display: 1
-DEBUG: Testing coordinates (-504, -1415) for app: Cursor
-DEBUG: Converted AppleScript coords (-504, -1415) to Cocoa coords (-504, 2744.0)
-DEBUG: Testing point (-504, 2744.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Point (-504, 2744.0) is inside display 4
-DEBUG: Detected display: 4
+If you want to update it to the latest compatible version, you can use `poetry update package`.
+If you prefer to upgrade it to the latest available version, you can use `poetry add package@latest`.
 
-15:45:48 - Focus changed: Cursor on display 4 (window at -504,-1415)
-🔅 Display 1: unfocused - creating overlay
-Creating overlay on display 1
-  Display 1 coordinates: x=0, y=25, size=2056x1329
-✓ Successfully created overlay on display 1
-🔆 Display 4: FOCUSED - removing overlay
-Removing overlay from display 4
-./monitor_dimmer.sh: line 289: 81060 Killed: 9               python3 -c "
-import sys
-import os
-import signal
-import time
-try:
-    from Cocoa import *
-    from Foundation import *
-except ImportError:
-    print('PyObjC not available - falling back to simple overlay')
-    # Simple fallback - just maintain a process for tracking
-    pid = os.getpid()
-    with open('/tmp/overlay_${display_id}_process.pid', 'w') as f:
-        f.write(str(pid))
-    
-    def cleanup_handler(signum, frame):
-        try:
-            os.remove('/tmp/overlay_${display_id}_process.pid')
-        except:
-            pass
-        sys.exit(0)
-    
-    signal.signal(signal.SIGTERM, cleanup_handler)
-    signal.signal(signal.SIGINT, cleanup_handler)
-    
-    while True:
-        time.sleep(1)
+Nothing to add.
+✓ Backend setup complete
 
-# Create native overlay window using Cocoa with real display coordinates
-app = NSApplication.sharedApplication()
+Setting up Electron frontend...
+Node.js dependencies already installed
+✓ Frontend setup complete
 
-# Create window using actual display coordinates
-window_rect = NSMakeRect($x_pos, $adjusted_y, $screen_width, $((screen_height - (adjusted_y - y_pos))))
-window = NSWindow.alloc().initWithContentRect_styleMask_backing_defer_(
-    window_rect,
-    NSWindowStyleMaskBorderless,
-    NSBackingStoreBuffered,
-    False
-)
+Starting Electron frontend...
 
-# Configure window for overlay
-window.setLevel_(NSFloatingWindowLevel)  # Always on top
-window.setOpaque_(False)  # Allow transparency
-window.setAlphaValue_($OVERLAY_OPACITY)  # Set transparency
-window.setBackgroundColor_(NSColor.blackColor())  # Black background
-window.setIgnoresMouseEvents_(True)  # Click-through!
-window.setAcceptsMouseMovedEvents_(False)
-window.setHasShadow_(False)
+✓ MonitorDimmer started successfully!
+Electron PID: 22178
+Backend will be managed by Electron on: http://localhost:8080
 
-# Show window
-window.makeKeyAndOrderFront_(None)
+Press Ctrl+C to stop the application
 
-# Save PID for cleanup
-pid = os.getpid()
-with open('/tmp/overlay_${display_id}_process.pid', 'w') as f:
-    f.write(str(pid))
+> quickdimmer@1.0.0 start
+> electron .
 
-# Handle cleanup
-def cleanup_handler(signum, frame):
-    try:
-        os.remove('/tmp/overlay_${display_id}_process.pid')
-    except:
-        pass
-    window.close()
-    sys.exit(0)
+QuickDimmer Electron initialized
+Electron ready, initializing QuickDimmer...
+Starting Python backend...
+Backend path: /Users/strattenwaldt/Desktop/Projects/Personal Projects/MonitorDimmer/backend
+main.py path: /Users/strattenwaldt/Desktop/Projects/Personal Projects/MonitorDimmer/backend/main.py
+Backend stdout: DisplayManager initialized with PyObjC
+FocusDetector initialized
+Backend stdout: API routes configured
+APIServer initialized
+Starting QuickDimmer backend...
+Backend stdout: Detected 3 screen(s)
+Backend stdout: Display 1: (0, 0, 2056, 1329)
+Backend stdout: Display 4: (-504, 1329, 2560, 1440)
+Display 5: (2056, 352, 1440, 2560)
+Found 3 displays
+Backend stdout: API server started on http://localhost:8080
+WebSocket endpoint: ws://localhost:8080/ws
+API server started on http://localhost:8080
+Display monitoring started
+Backend stdout: DEBUG: Converted AppleScript coords (-504, -1415) to Cocoa coords (-504, 2744)
+DEBUG: Testing point (-504, 2744) against display bounds:
+DEBUG: Display 1: bounds=(0, 0) to (2056, 1329)
+DEBUG: Display 4: bounds=(-504, 1329) to (2056, 2769)
+DEBUG: Point (-504, 2744) is inside display 4
+DEBUG: App 'Cursor' at (-504, -1415) -> Display 4
+Initial focus detection: Display 4
+QuickDimmer backend ready!
+Main window created
+System tray created
+Backend stdout: DEBUG: Converted AppleScript coords (-504, -1415) to Cocoa coords (-504, 2744)
+DEBUG: Testing point (-504, 2744) against display bounds:
+DEBUG: Display 1: bounds=(0, 0) to (2056, 1329)
+DEBUG: Display 4: bounds=(-504, 1329) to (2056, 2769)
+DEBUG: Point (-504, 2744) is inside display 4
+DEBUG: App 'Cursor' at (-504, -1415) -> Display 4
+Backend stdout: Creating initial overlays asynchronously...
+Backend API is responding
+QuickDimmer fully initialized and ready
+Main window ready to show
+Backend stdout: WebSocket client connected. Total connections: 1
+Backend stdout: DEBUG: Converted AppleScript coords (-504, -1415) to Cocoa coords (-504, 2744)
+DEBUG: Testing point (-504, 2744) against display bounds:
+DEBUG: Display 1: bounds=(0, 0) to (2056, 1329)
+DEBUG: Display 4: bounds=(-504, 1329) to (2056, 2769)
+DEBUG: Point (-504, 2744) is inside display 4
+DEBUG: App 'Cursor' at (-504, -1415) -> Display 4
+Backend stdout: Creating overlay for display 1
+Backend stdout: TIMING: Starting overlay creation for display 1 at 1752270933.755
+Backend stdout: Overlay 1 debug: OVERLAY_DEBUG: Starting overlay script for display 1 at 1752270933.809
+OVERLAY_DEBUG: Set LSUIElement at 1752270933.809
+OVERLAY_DEBUG: About to import Cocoa at 1752270933.809
+OVERLAY_DEBUG: Import failed at 1752270933.809: No module named 'Cocoa'
+Backend stdout: TIMING: Overlay for display 1 started in 0.311s
+Backend stdout: Creating overlay for display 5
+TIMING: Starting overlay creation for display 5 at 1752270934.067
+Backend stdout: Overlay 5 debug: OVERLAY_DEBUG: Starting overlay script for display 5 at 1752270934.122
+OVERLAY_DEBUG: Set LSUIElement at 1752270934.122
+OVERLAY_DEBUG: About to import Cocoa at 1752270934.122
+OVERLAY_DEBUG: Import failed at 1752270934.122: No module named 'Cocoa'
+Backend stdout: TIMING: Overlay for display 5 started in 0.317s
+Backend stdout: Initial overlays created
+Backend stdout: DEBUG: Converted AppleScript coords (1203, -1415) to Cocoa coords (1203, 2744)
+DEBUG: Testing point (1203, 2744) against display bounds:
+DEBUG: Display 1: bounds=(0, 0) to (2056, 1329)
+DEBUG: Display 4: bounds=(-504, 1329) to (2056, 2769)
+DEBUG: Point (1203, 2744) is inside display 4
+DEBUG: App 'Terminal' at (1203, -1415) -> Display 4
+Backend stdout: DEBUG: Converted AppleScript coords (1203, -1415) to Cocoa coords (1203, 2744)
+DEBUG: Testing point (1203, 2744) against display bounds:
+DEBUG: Display 1: bounds=(0, 0) to (2056, 1329)
+DEBUG: Display 4: bounds=(-504, 1329) to (2056, 2769)
+DEBUG: Point (1203, 2744) is inside display 4
+DEBUG: App 'Terminal' at (1203, -1415) -> Display 4
+Backend stdout: DEBUG: Converted AppleScript coords (1203, -1415) to Cocoa coords (1203, 2744)
+DEBUG: Testing point (1203, 2744) against display bounds:
+DEBUG: Display 1: bounds=(0, 0) to (2056, 1329)
+DEBUG: Display 4: bounds=(-504, 1329) to (2056, 2769)
+DEBUG: Point (1203, 2744) is inside display 4
+DEBUG: App 'Terminal' at (1203, -1415) -> Display 4
+Backend stdout: DEBUG: Converted AppleScript coords (1203, -1415) to Cocoa coords (1203, 2744)
+DEBUG: Testing point (1203, 2744) against display bounds:
+DEBUG: Display 1: bounds=(0, 0) to (2056, 1329)
+DEBUG: Display 4: bounds=(-504, 1329) to (2056, 2769)
+DEBUG: Point (1203, 2744) is inside display 4
+DEBUG: App 'Terminal' at (1203, -1415) -> Display 4
+Backend stdout: DEBUG: Converted AppleScript coords (1203, -1415) to Cocoa coords (1203, 2744)
+DEBUG: Testing point (1203, 2744) against display bounds:
+DEBUG: Display 1: bounds=(0, 0) to (2056, 1329)
+DEBUG: Display 4: bounds=(-504, 1329) to (2056, 2769)
+DEBUG: Point (1203, 2744) is inside display 4
+DEBUG: App 'Terminal' at (1203, -1415) -> Display 4
+Backend stdout: DEBUG: Converted AppleScript coords (1203, -1415) to Cocoa coords (1203, 2744)
+DEBUG: Testing point (1203, 2744) against display bounds:
+DEBUG: Display 1: bounds=(0, 0) to (2056, 1329)
+DEBUG: Display 4: bounds=(-504, 1329) to (2056, 2769)
+DEBUG: Point (1203, 2744) is inside display 4
+DEBUG: App 'Terminal' at (1203, -1415) -> Display 4
+Backend stdout: DEBUG: Converted AppleScript coords (1203, -1415) to Cocoa coords (1203, 2744)
+DEBUG: Testing point (1203, 2744) against display bounds:
+DEBUG: Display 1: bounds=(0, 0) to (2056, 1329)
+DEBUG: Display 4: bounds=(-504, 1329) to (2056, 2769)
+DEBUG: Point (1203, 2744) is inside display 4
+DEBUG: App 'Terminal' at (1203, -1415) -> Display 4
+Backend stdout: DEBUG: Converted AppleScript coords (1203, -1415) to Cocoa coords (1203, 2744)
+DEBUG: Testing point (1203, 2744) against display bounds:
+DEBUG: Display 1: bounds=(0, 0) to (2056, 1329)
+DEBUG: Display 4: bounds=(-504, 1329) to (2056, 2769)
+DEBUG: Point (1203, 2744) is inside display 4
+DEBUG: App 'Terminal' at (1203, -1415) -> Display 4
+Backend stdout: DEBUG: Converted AppleScript coords (1203, -1415) to Cocoa coords (1203, 2744)
+DEBUG: Testing point (1203, 2744) against display bounds:
+DEBUG: Display 1: bounds=(0, 0) to (2056, 1329)
+DEBUG: Display 4: bounds=(-504, 1329) to (2056, 2769)
+DEBUG: Point (1203, 2744) is inside display 4
+DEBUG: App 'Terminal' at (1203, -1415) -> Display 4
+Backend stdout: DEBUG: Converted AppleScript coords (1203, -1415) to Cocoa coords (1203, 2744)
+DEBUG: Testing point (1203, 2744) against display bounds:
+DEBUG: Display 1: bounds=(0, 0) to (2056, 1329)
+DEBUG: Display 4: bounds=(-504, 1329) to (2056, 2769)
+DEBUG: Point (1203, 2744) is inside display 4
+DEBUG: App 'Terminal' at (1203, -1415) -> Display 4
+Backend stdout: DEBUG: Converted AppleScript coords (1203, -1415) to Cocoa coords (1203, 2744)
+DEBUG: Testing point (1203, 2744) against display bounds:
+DEBUG: Display 1: bounds=(0, 0) to (2056, 1329)
+DEBUG: Display 4: bounds=(-504, 1329) to (2056, 2769)
+DEBUG: Point (1203, 2744) is inside display 4
+DEBUG: App 'Terminal' at (1203, -1415) -> Display 4
+Backend stdout: DEBUG: Converted AppleScript coords (1203, -1415) to Cocoa coords (1203, 2744)
+DEBUG: Testing point (1203, 2744) against display bounds:
+DEBUG: Display 1: bounds=(0, 0) to (2056, 1329)
+DEBUG: Display 4: bounds=(-504, 1329) to (2056, 2769)
+DEBUG: Point (1203, 2744) is inside display 4
+DEBUG: App 'Terminal' at (1203, -1415) -> Display 4
+Backend stdout: DEBUG: Converted AppleScript coords (1203, -1415) to Cocoa coords (1203, 2744)
+DEBUG: Testing point (1203, 2744) against display bounds:
+DEBUG: Display 1: bounds=(0, 0) to (2056, 1329)
+DEBUG: Display 4: bounds=(-504, 1329) to (2056, 2769)
+DEBUG: Point (1203, 2744) is inside display 4
+DEBUG: App 'Terminal' at (1203, -1415) -> Display 4
+Backend stdout: DEBUG: Converted AppleScript coords (1203, -1415) to Cocoa coords (1203, 2744)
+DEBUG: Testing point (1203, 2744) against display bounds:
+DEBUG: Display 1: bounds=(0, 0) to (2056, 1329)
+DEBUG: Display 4: bounds=(-504, 1329) to (2056, 2769)
+DEBUG: Point (1203, 2744) is inside display 4
+DEBUG: App 'Terminal' at (1203, -1415) -> Display 4
+Backend stdout: DEBUG: Converted AppleScript coords (1203, -1415) to Cocoa coords (1203, 2744)
+DEBUG: Testing point (1203, 2744) against display bounds:
+DEBUG: Display 1: bounds=(0, 0) to (2056, 1329)
+DEBUG: Display 4: bounds=(-504, 1329) to (2056, 2769)
+DEBUG: Point (1203, 2744) is inside display 4
+DEBUG: App 'Terminal' at (1203, -1415) -> Display 4
+Backend stdout: DEBUG: Converted AppleScript coords (1203, -1415) to Cocoa coords (1203, 2744)
+DEBUG: Testing point (1203, 2744) against display bounds:
+DEBUG: Display 1: bounds=(0, 0) to (2056, 1329)
+DEBUG: Display 4: bounds=(-504, 1329) to (2056, 2769)
+DEBUG: Point (1203, 2744) is inside display 4
+DEBUG: App 'Terminal' at (1203, -1415) -> Display 4
+Backend stdout: DEBUG: Converted AppleScript coords (2056, -1558) to Cocoa coords (2056, 2887)
+DEBUG: Testing point (2056, 2887) against display bounds:
+DEBUG: Display 1: bounds=(0, 0) to (2056, 1329)
+DEBUG: Display 4: bounds=(-504, 1329) to (2056, 2769)
+DEBUG: Display 5: bounds=(2056, 352) to (3496, 2912)
+DEBUG: Point (2056, 2887) is inside display 5
+DEBUG: App 'Microsoft Edge' at (2056, -1558) -> Display 5
+Backend stdout: Creating overlay for display 1
+TIMING: Starting overlay creation for display 1 at 1752270945.417
+Backend stdout: Overlay 1 debug: OVERLAY_DEBUG: Starting overlay script for display 1 at 1752270945.454
+OVERLAY_DEBUG: Set LSUIElement at 1752270945.454
+OVERLAY_DEBUG: About to import Cocoa at 1752270945.454
+OVERLAY_DEBUG: Import failed at 1752270945.454: No module named 'Cocoa'
+Backend stdout: TIMING: Overlay for display 1 started in 0.310s
+Backend stdout: Creating overlay for display 4
+TIMING: Starting overlay creation for display 4 at 1752270945.728
+Backend stdout: Overlay 4 debug: OVERLAY_DEBUG: Starting overlay script for display 4 at 1752270945.781
+OVERLAY_DEBUG: Set LSUIElement at 1752270945.781
+OVERLAY_DEBUG: About to import Cocoa at 1752270945.781
+OVERLAY_DEBUG: Import failed at 1752270945.781: No module named 'Cocoa'
+Backend stdout: TIMING: Overlay for display 4 started in 0.322s
+Backend stdout: Removed overlay from display 5
+Backend stdout: DEBUG: Converted AppleScript coords (2056, -1558) to Cocoa coords (2056, 2887)
+DEBUG: Testing point (2056, 2887) against display bounds:
+DEBUG: Display 1: bounds=(0, 0) to (2056, 1329)
+DEBUG: Display 4: bounds=(-504, 1329) to (2056, 2769)
+DEBUG: Display 5: bounds=(2056, 352) to (3496, 2912)
+DEBUG: Point (2056, 2887) is inside display 5
+DEBUG: App 'Microsoft Edge' at (2056, -1558) -> Display 5
+Backend stdout: DEBUG: Converted AppleScript coords (2056, -1558) to Cocoa coords (2056, 2887)
+DEBUG: Testing point (2056, 2887) against display bounds:
+DEBUG: Display 1: bounds=(0, 0) to (2056, 1329)
+DEBUG: Display 4: bounds=(-504, 1329) to (2056, 2769)
+DEBUG: Display 5: bounds=(2056, 352) to (3496, 2912)
+DEBUG: Point (2056, 2887) is inside display 5
+DEBUG: App 'Microsoft Edge' at (2056, -1558) -> Display 5
+Backend stdout: DEBUG: Converted AppleScript coords (2056, -1558) to Cocoa coords (2056, 2887)
+DEBUG: Testing point (2056, 2887) against display bounds:
+DEBUG: Display 1: bounds=(0, 0) to (2056, 1329)
+DEBUG: Display 4: bounds=(-504, 1329) to (2056, 2769)
+DEBUG: Display 5: bounds=(2056, 352) to (3496, 2912)
+DEBUG: Point (2056, 2887) is inside display 5
+DEBUG: App 'Microsoft Edge' at (2056, -1558) -> Display 5
+Backend stdout: DEBUG: Converted AppleScript coords (2056, -1558) to Cocoa coords (2056, 2887)
+DEBUG: Testing point (2056, 2887) against display bounds:
+DEBUG: Display 1: bounds=(0, 0) to (2056, 1329)
+DEBUG: Display 4: bounds=(-504, 1329) to (2056, 2769)
+DEBUG: Display 5: bounds=(2056, 352) to (3496, 2912)
+DEBUG: Point (2056, 2887) is inside display 5
+DEBUG: App 'Microsoft Edge' at (2056, -1558) -> Display 5
+Backend stdout: DEBUG: Converted AppleScript coords (2056, -1558) to Cocoa coords (2056, 2887)
+DEBUG: Testing point (2056, 2887) against display bounds:
+DEBUG: Display 1: bounds=(0, 0) to (2056, 1329)
+DEBUG: Display 4: bounds=(-504, 1329) to (2056, 2769)
+DEBUG: Display 5: bounds=(2056, 352) to (3496, 2912)
+DEBUG: Point (2056, 2887) is inside display 5
+DEBUG: App 'Microsoft Edge' at (2056, -1558) -> Display 5
+Backend stdout: DEBUG: Converted AppleScript coords (2056, -1558) to Cocoa coords (2056, 2887)
+DEBUG: Testing point (2056, 2887) against display bounds:
+DEBUG: Display 1: bounds=(0, 0) to (2056, 1329)
+DEBUG: Display 4: bounds=(-504, 1329) to (2056, 2769)
+DEBUG: Display 5: bounds=(2056, 352) to (3496, 2912)
+DEBUG: Point (2056, 2887) is inside display 5
+DEBUG: App 'Microsoft Edge' at (2056, -1558) -> Display 5
+Backend stdout: DEBUG: Converted AppleScript coords (2056, -1558) to Cocoa coords (2056, 2887)
+DEBUG: Testing point (2056, 2887) against display bounds:
+DEBUG: Display 1: bounds=(0, 0) to (2056, 1329)
+DEBUG: Display 4: bounds=(-504, 1329) to (2056, 2769)
+DEBUG: Display 5: bounds=(2056, 352) to (3496, 2912)
+DEBUG: Point (2056, 2887) is inside display 5
+DEBUG: App 'Microsoft Edge' at (2056, -1558) -> Display 5
+Backend stdout: DEBUG: Converted AppleScript coords (2056, -1558) to Cocoa coords (2056, 2887)
+DEBUG: Testing point (2056, 2887) against display bounds:
+DEBUG: Display 1: bounds=(0, 0) to (2056, 1329)
+DEBUG: Display 4: bounds=(-504, 1329) to (2056, 2769)
+DEBUG: Display 5: bounds=(2056, 352) to (3496, 2912)
+DEBUG: Point (2056, 2887) is inside display 5
+DEBUG: App 'Microsoft Edge' at (2056, -1558) -> Display 5
+Backend stdout: DEBUG: Converted AppleScript coords (2056, -1558) to Cocoa coords (2056, 2887)
+DEBUG: Testing point (2056, 2887) against display bounds:
+DEBUG: Display 1: bounds=(0, 0) to (2056, 1329)
+DEBUG: Display 4: bounds=(-504, 1329) to (2056, 2769)
+DEBUG: Display 5: bounds=(2056, 352) to (3496, 2912)
+DEBUG: Point (2056, 2887) is inside display 5
+DEBUG: App 'Microsoft Edge' at (2056, -1558) -> Display 5
+Backend stdout: DEBUG: Converted AppleScript coords (2056, -1558) to Cocoa coords (2056, 2887)
+DEBUG: Testing point (2056, 2887) against display bounds:
+DEBUG: Display 1: bounds=(0, 0) to (2056, 1329)
+DEBUG: Display 4: bounds=(-504, 1329) to (2056, 2769)
+DEBUG: Display 5: bounds=(2056, 352) to (3496, 2912)
+DEBUG: Point (2056, 2887) is inside display 5
+DEBUG: App 'Microsoft Edge' at (2056, -1558) -> Display 5
+Backend stdout: DEBUG: Converted AppleScript coords (2056, -1558) to Cocoa coords (2056, 2887)
+DEBUG: Testing point (2056, 2887) against display bounds:
+DEBUG: Display 1: bounds=(0, 0) to (2056, 1329)
+DEBUG: Display 4: bounds=(-504, 1329) to (2056, 2769)
+DEBUG: Display 5: bounds=(2056, 352) to (3496, 2912)
+DEBUG: Point (2056, 2887) is inside display 5
+DEBUG: App 'Microsoft Edge' at (2056, -1558) -> Display 5
+Backend stdout: DEBUG: Converted AppleScript coords (2056, -1558) to Cocoa coords (2056, 2887)
+DEBUG: Testing point (2056, 2887) against display bounds:
+DEBUG: Display 1: bounds=(0, 0) to (2056, 1329)
+DEBUG: Display 4: bounds=(-504, 1329) to (2056, 2769)
+DEBUG: Display 5: bounds=(2056, 352) to (3496, 2912)
+DEBUG: Point (2056, 2887) is inside display 5
+DEBUG: App 'Microsoft Edge' at (2056, -1558) -> Display 5
+Backend stdout: DEBUG: Converted AppleScript coords (2056, -1558) to Cocoa coords (2056, 2887)
+DEBUG: Testing point (2056, 2887) against display bounds:
+DEBUG: Display 1: bounds=(0, 0) to (2056, 1329)
+DEBUG: Display 4: bounds=(-504, 1329) to (2056, 2769)
+DEBUG: Display 5: bounds=(2056, 352) to (3496, 2912)
+DEBUG: Point (2056, 2887) is inside display 5
+DEBUG: App 'Microsoft Edge' at (2056, -1558) -> Display 5
+Backend stdout: DEBUG: Converted AppleScript coords (2056, -1558) to Cocoa coords (2056, 2887)
+DEBUG: Testing point (2056, 2887) against display bounds:
+DEBUG: Display 1: bounds=(0, 0) to (2056, 1329)
+DEBUG: Display 4: bounds=(-504, 1329) to (2056, 2769)
+DEBUG: Display 5: bounds=(2056, 352) to (3496, 2912)
+DEBUG: Point (2056, 2887) is inside display 5
+DEBUG: App 'Microsoft Edge' at (2056, -1558) -> Display 5
+Backend stdout: DEBUG: Converted AppleScript coords (-504, -1415) to Cocoa coords (-504, 2744)
+DEBUG: Testing point (-504, 2744) against display bounds:
+DEBUG: Display 1: bounds=(0, 0) to (2056, 1329)
+DEBUG: Display 4: bounds=(-504, 1329) to (2056, 2769)
+DEBUG: Point (-504, 2744) is inside display 4
+DEBUG: App 'Cursor' at (-504, -1415) -> Display 4
+Backend stdout: Creating overlay for display 1
+TIMING: Starting overlay creation for display 1 at 1752270956.706
+Backend stdout: Overlay 1 debug: OVERLAY_DEBUG: Starting overlay script for display 1 at 1752270956.755
+OVERLAY_DEBUG: Set LSUIElement at 1752270956.755
+OVERLAY_DEBUG: About to import Cocoa at 1752270956.755
+OVERLAY_DEBUG: Import failed at 1752270956.755: No module named 'Cocoa'
+Backend stdout: TIMING: Overlay for display 1 started in 0.311s
+Backend stdout: Removed overlay from display 4
+Creating overlay for display 5
+TIMING: Starting overlay creation for display 5 at 1752270957.017
+Backend stdout: Overlay 5 debug: OVERLAY_DEBUG: Starting overlay script for display 5 at 1752270957.082
+OVERLAY_DEBUG: Set LSUIElement at 1752270957.082
+OVERLAY_DEBUG: About to import Cocoa at 1752270957.082
+OVERLAY_DEBUG: Import failed at 1752270957.082: No module named 'Cocoa'
+Backend stdout: TIMING: Overlay for display 5 started in 0.319s
+Backend stdout: DEBUG: Converted AppleScript coords (43, 44) to Cocoa coords (43, 1285)
+DEBUG: Testing point (43, 1285) against display bounds:
+DEBUG: Display 1: bounds=(0, 0) to (2056, 1329)
+DEBUG: Point (43, 1285) is inside display 1
+DEBUG: App 'Cursor' at (43, 44) -> Display 1
+Backend stdout: Removed overlay from display 1
+Creating overlay for display 4
+TIMING: Starting overlay creation for display 4 at 1752270958.039
+Backend stdout: Overlay 4 debug: OVERLAY_DEBUG: Starting overlay script for display 4 at 1752270958.076
+OVERLAY_DEBUG: Set LSUIElement at 1752270958.076
+OVERLAY_DEBUG: About to import Cocoa at 1752270958.076
+OVERLAY_DEBUG: Import failed at 1752270958.076: No module named 'Cocoa'
+Backend stdout: TIMING: Overlay for display 4 started in 0.311s
+Backend stdout: Creating overlay for display 5
+TIMING: Starting overlay creation for display 5 at 1752270958.351
+Backend stdout: Overlay 5 debug: OVERLAY_DEBUG: Starting overlay script for display 5 at 1752270958.385
+OVERLAY_DEBUG: Set LSUIElement at 1752270958.385
+OVERLAY_DEBUG: About to import Cocoa at 1752270958.385
+OVERLAY_DEBUG: Import failed at 1752270958.385: No module named 'Cocoa'
+Backend stdout: TIMING: Overlay for display 5 started in 0.311s
+Backend stdout: DEBUG: Converted AppleScript coords (1203, -1415) to Cocoa coords (1203, 2744)
+DEBUG: Testing point (1203, 2744) against display bounds:
+DEBUG: Display 1: bounds=(0, 0) to (2056, 1329)
+DEBUG: Display 4: bounds=(-504, 1329) to (2056, 2769)
+DEBUG: Point (1203, 2744) is inside display 4
+DEBUG: App 'Terminal' at (1203, -1415) -> Display 4
+Creating overlay for display 1
+Backend stdout: TIMING: Starting overlay creation for display 1 at 1752270959.341
+Backend stdout: Overlay 1 debug: OVERLAY_DEBUG: Starting overlay script for display 1 at 1752270959.375
+OVERLAY_DEBUG: Set LSUIElement at 1752270959.375
+OVERLAY_DEBUG: About to import Cocoa at 1752270959.375
+OVERLAY_DEBUG: Import failed at 1752270959.375: No module named 'Cocoa'
+Backend stdout: TIMING: Overlay for display 1 started in 0.310s
+Backend stdout: Removed overlay from display 4
+Creating overlay for display 5
+Backend stdout: TIMING: Starting overlay creation for display 5 at 1752270959.652
+Backend stdout: Overlay 5 debug: OVERLAY_DEBUG: Starting overlay script for display 5 at 1752270959.695
+OVERLAY_DEBUG: Set LSUIElement at 1752270959.695
+OVERLAY_DEBUG: About to import Cocoa at 1752270959.695
+OVERLAY_DEBUG: Import failed at 1752270959.696: No module named 'Cocoa'
+Backend stdout: TIMING: Overlay for display 5 started in 0.315s
 
-signal.signal(signal.SIGTERM, cleanup_handler)
-signal.signal(signal.SIGINT, cleanup_handler)
-
-# Run the application
-try:
-    app.run()
-except KeyboardInterrupt:
-    cleanup_handler(0, None)
-"
-✓ Overlay removed from display 4
-🔅 Display 5: unfocused - creating overlay
-DEBUG: Testing coordinates (-504, -1415) for app: Cursor
-DEBUG: Converted AppleScript coords (-504, -1415) to Cocoa coords (-504, 2744.0)
-DEBUG: Testing point (-504, 2744.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Point (-504, 2744.0) is inside display 4
-DEBUG: Detected display: 4
-DEBUG: Testing coordinates (-504, -1415) for app: Cursor
-DEBUG: Converted AppleScript coords (-504, -1415) to Cocoa coords (-504, 2744.0)
-DEBUG: Testing point (-504, 2744.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Point (-504, 2744.0) is inside display 4
-DEBUG: Detected display: 4
-DEBUG: Testing coordinates (-504, -1415) for app: Cursor
-DEBUG: Converted AppleScript coords (-504, -1415) to Cocoa coords (-504, 2744.0)
-DEBUG: Testing point (-504, 2744.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Point (-504, 2744.0) is inside display 4
-DEBUG: Detected display: 4
-DEBUG: Testing coordinates (-504, -1415) for app: Cursor
-DEBUG: Converted AppleScript coords (-504, -1415) to Cocoa coords (-504, 2744.0)
-DEBUG: Testing point (-504, 2744.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Point (-504, 2744.0) is inside display 4
-DEBUG: Detected display: 4
-DEBUG: Testing coordinates (2056, -1558) for app: Microsoft Edge
-DEBUG: Converted AppleScript coords (2056, -1558) to Cocoa coords (2056, 2887.0)
-DEBUG: Testing point (2056, 2887.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Display 5: bounds=(2056.0, 352.0) to (3496.0, 2912.0)
-DEBUG: Point (2056, 2887.0) is inside display 5
-DEBUG: Detected display: 5
-
-15:45:55 - Focus changed: Microsoft Edge on display 5 (window at 2056,-1558)
-🔅 Display 1: unfocused - creating overlay
-🔅 Display 4: unfocused - creating overlay
-Creating overlay on display 4
-  Display 4 coordinates: x=-504, y=1329, size=2560x1440
-✓ Successfully created overlay on display 4
-🔆 Display 5: FOCUSED - removing overlay
-Removing overlay from display 5
-./monitor_dimmer.sh: line 289: 81065 Killed: 9               python3 -c "
-import sys
-import os
-import signal
-import time
-try:
-    from Cocoa import *
-    from Foundation import *
-except ImportError:
-    print('PyObjC not available - falling back to simple overlay')
-    # Simple fallback - just maintain a process for tracking
-    pid = os.getpid()
-    with open('/tmp/overlay_${display_id}_process.pid', 'w') as f:
-        f.write(str(pid))
-    
-    def cleanup_handler(signum, frame):
-        try:
-            os.remove('/tmp/overlay_${display_id}_process.pid')
-        except:
-            pass
-        sys.exit(0)
-    
-    signal.signal(signal.SIGTERM, cleanup_handler)
-    signal.signal(signal.SIGINT, cleanup_handler)
-    
-    while True:
-        time.sleep(1)
-
-# Create native overlay window using Cocoa with real display coordinates
-app = NSApplication.sharedApplication()
-
-# Create window using actual display coordinates
-window_rect = NSMakeRect($x_pos, $adjusted_y, $screen_width, $((screen_height - (adjusted_y - y_pos))))
-window = NSWindow.alloc().initWithContentRect_styleMask_backing_defer_(
-    window_rect,
-    NSWindowStyleMaskBorderless,
-    NSBackingStoreBuffered,
-    False
-)
-
-# Configure window for overlay
-window.setLevel_(NSFloatingWindowLevel)  # Always on top
-window.setOpaque_(False)  # Allow transparency
-window.setAlphaValue_($OVERLAY_OPACITY)  # Set transparency
-window.setBackgroundColor_(NSColor.blackColor())  # Black background
-window.setIgnoresMouseEvents_(True)  # Click-through!
-window.setAcceptsMouseMovedEvents_(False)
-window.setHasShadow_(False)
-
-# Show window
-window.makeKeyAndOrderFront_(None)
-
-# Save PID for cleanup
-pid = os.getpid()
-with open('/tmp/overlay_${display_id}_process.pid', 'w') as f:
-    f.write(str(pid))
-
-# Handle cleanup
-def cleanup_handler(signum, frame):
-    try:
-        os.remove('/tmp/overlay_${display_id}_process.pid')
-    except:
-        pass
-    window.close()
-    sys.exit(0)
-
-signal.signal(signal.SIGTERM, cleanup_handler)
-signal.signal(signal.SIGINT, cleanup_handler)
-
-# Run the application
-try:
-    app.run()
-except KeyboardInterrupt:
-    cleanup_handler(0, None)
-"
-✓ Overlay removed from display 5
-DEBUG: Testing coordinates (2056, -1558) for app: Microsoft Edge
-DEBUG: Converted AppleScript coords (2056, -1558) to Cocoa coords (2056, 2887.0)
-DEBUG: Testing point (2056, 2887.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Display 5: bounds=(2056.0, 352.0) to (3496.0, 2912.0)
-DEBUG: Point (2056, 2887.0) is inside display 5
-DEBUG: Detected display: 5
-DEBUG: Testing coordinates (2056, -1558) for app: Microsoft Edge
-DEBUG: Converted AppleScript coords (2056, -1558) to Cocoa coords (2056, 2887.0)
-DEBUG: Testing point (2056, 2887.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Display 5: bounds=(2056.0, 352.0) to (3496.0, 2912.0)
-DEBUG: Point (2056, 2887.0) is inside display 5
-DEBUG: Detected display: 5
-DEBUG: Testing coordinates (2056, -1558) for app: Microsoft Edge
-DEBUG: Converted AppleScript coords (2056, -1558) to Cocoa coords (2056, 2887.0)
-DEBUG: Testing point (2056, 2887.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Display 5: bounds=(2056.0, 352.0) to (3496.0, 2912.0)
-DEBUG: Point (2056, 2887.0) is inside display 5
-DEBUG: Detected display: 5
-DEBUG: Testing coordinates (2056, -1558) for app: Microsoft Edge
-DEBUG: Converted AppleScript coords (2056, -1558) to Cocoa coords (2056, 2887.0)
-DEBUG: Testing point (2056, 2887.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Display 5: bounds=(2056.0, 352.0) to (3496.0, 2912.0)
-DEBUG: Point (2056, 2887.0) is inside display 5
-DEBUG: Detected display: 5
-DEBUG: Testing coordinates (2056, -1558) for app: Microsoft Edge
-DEBUG: Converted AppleScript coords (2056, -1558) to Cocoa coords (2056, 2887.0)
-DEBUG: Testing point (2056, 2887.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Display 5: bounds=(2056.0, 352.0) to (3496.0, 2912.0)
-DEBUG: Point (2056, 2887.0) is inside display 5
-DEBUG: Detected display: 5
-DEBUG: Testing coordinates (2056, -1558) for app: Microsoft Edge
-DEBUG: Converted AppleScript coords (2056, -1558) to Cocoa coords (2056, 2887.0)
-DEBUG: Testing point (2056, 2887.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Display 5: bounds=(2056.0, 352.0) to (3496.0, 2912.0)
-DEBUG: Point (2056, 2887.0) is inside display 5
-DEBUG: Detected display: 5
-DEBUG: Testing coordinates (2056, -1558) for app: Microsoft Edge
-DEBUG: Converted AppleScript coords (2056, -1558) to Cocoa coords (2056, 2887.0)
-DEBUG: Testing point (2056, 2887.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Display 5: bounds=(2056.0, 352.0) to (3496.0, 2912.0)
-DEBUG: Point (2056, 2887.0) is inside display 5
-DEBUG: Detected display: 5
-DEBUG: Testing coordinates (2056, -1558) for app: Microsoft Edge
-DEBUG: Converted AppleScript coords (2056, -1558) to Cocoa coords (2056, 2887.0)
-DEBUG: Testing point (2056, 2887.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Display 5: bounds=(2056.0, 352.0) to (3496.0, 2912.0)
-DEBUG: Point (2056, 2887.0) is inside display 5
-DEBUG: Detected display: 5
-DEBUG: Testing coordinates (2056, -1558) for app: Microsoft Edge
-DEBUG: Converted AppleScript coords (2056, -1558) to Cocoa coords (2056, 2887.0)
-DEBUG: Testing point (2056, 2887.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Display 5: bounds=(2056.0, 352.0) to (3496.0, 2912.0)
-DEBUG: Point (2056, 2887.0) is inside display 5
-DEBUG: Detected display: 5
-DEBUG: Testing coordinates (2056, -1558) for app: Microsoft Edge
-DEBUG: Converted AppleScript coords (2056, -1558) to Cocoa coords (2056, 2887.0)
-DEBUG: Testing point (2056, 2887.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Display 5: bounds=(2056.0, 352.0) to (3496.0, 2912.0)
-DEBUG: Point (2056, 2887.0) is inside display 5
-DEBUG: Detected display: 5
-DEBUG: Testing coordinates (2056, -1558) for app: Microsoft Edge
-DEBUG: Converted AppleScript coords (2056, -1558) to Cocoa coords (2056, 2887.0)
-DEBUG: Testing point (2056, 2887.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Display 5: bounds=(2056.0, 352.0) to (3496.0, 2912.0)
-DEBUG: Point (2056, 2887.0) is inside display 5
-DEBUG: Detected display: 5
-DEBUG: Testing coordinates (2056, -1558) for app: Microsoft Edge
-DEBUG: Converted AppleScript coords (2056, -1558) to Cocoa coords (2056, 2887.0)
-DEBUG: Testing point (2056, 2887.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Display 5: bounds=(2056.0, 352.0) to (3496.0, 2912.0)
-DEBUG: Point (2056, 2887.0) is inside display 5
-DEBUG: Detected display: 5
-DEBUG: Testing coordinates (2056, -1558) for app: Microsoft Edge
-DEBUG: Converted AppleScript coords (2056, -1558) to Cocoa coords (2056, 2887.0)
-DEBUG: Testing point (2056, 2887.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Display 5: bounds=(2056.0, 352.0) to (3496.0, 2912.0)
-DEBUG: Point (2056, 2887.0) is inside display 5
-DEBUG: Detected display: 5
-DEBUG: Testing coordinates (2056, -1558) for app: Microsoft Edge
-DEBUG: Converted AppleScript coords (2056, -1558) to Cocoa coords (2056, 2887.0)
-DEBUG: Testing point (2056, 2887.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Display 5: bounds=(2056.0, 352.0) to (3496.0, 2912.0)
-DEBUG: Point (2056, 2887.0) is inside display 5
-DEBUG: Detected display: 5
-DEBUG: Testing coordinates (2056, -1558) for app: Microsoft Edge
-DEBUG: Converted AppleScript coords (2056, -1558) to Cocoa coords (2056, 2887.0)
-DEBUG: Testing point (2056, 2887.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Display 5: bounds=(2056.0, 352.0) to (3496.0, 2912.0)
-DEBUG: Point (2056, 2887.0) is inside display 5
-DEBUG: Detected display: 5
-DEBUG: Testing coordinates (20, 44) for app: Terminal
-DEBUG: Converted AppleScript coords (20, 44) to Cocoa coords (20, 1285.0)
-DEBUG: Testing point (20, 1285.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Point (20, 1285.0) is inside display 1
-DEBUG: Detected display: 1
-
-15:46:18 - Focus changed: Terminal on display 1 (window at 20,44)
-🔆 Display 1: FOCUSED - removing overlay
-Removing overlay from display 1
-./monitor_dimmer.sh: line 289: 81199 Killed: 9               python3 -c "
-import sys
-import os
-import signal
-import time
-try:
-    from Cocoa import *
-    from Foundation import *
-except ImportError:
-    print('PyObjC not available - falling back to simple overlay')
-    # Simple fallback - just maintain a process for tracking
-    pid = os.getpid()
-    with open('/tmp/overlay_${display_id}_process.pid', 'w') as f:
-        f.write(str(pid))
-    
-    def cleanup_handler(signum, frame):
-        try:
-            os.remove('/tmp/overlay_${display_id}_process.pid')
-        except:
-            pass
-        sys.exit(0)
-    
-    signal.signal(signal.SIGTERM, cleanup_handler)
-    signal.signal(signal.SIGINT, cleanup_handler)
-    
-    while True:
-        time.sleep(1)
-
-# Create native overlay window using Cocoa with real display coordinates
-app = NSApplication.sharedApplication()
-
-# Create window using actual display coordinates
-window_rect = NSMakeRect($x_pos, $adjusted_y, $screen_width, $((screen_height - (adjusted_y - y_pos))))
-window = NSWindow.alloc().initWithContentRect_styleMask_backing_defer_(
-    window_rect,
-    NSWindowStyleMaskBorderless,
-    NSBackingStoreBuffered,
-    False
-)
-
-# Configure window for overlay
-window.setLevel_(NSFloatingWindowLevel)  # Always on top
-window.setOpaque_(False)  # Allow transparency
-window.setAlphaValue_($OVERLAY_OPACITY)  # Set transparency
-window.setBackgroundColor_(NSColor.blackColor())  # Black background
-window.setIgnoresMouseEvents_(True)  # Click-through!
-window.setAcceptsMouseMovedEvents_(False)
-window.setHasShadow_(False)
-
-# Show window
-window.makeKeyAndOrderFront_(None)
-
-# Save PID for cleanup
-pid = os.getpid()
-with open('/tmp/overlay_${display_id}_process.pid', 'w') as f:
-    f.write(str(pid))
-
-# Handle cleanup
-def cleanup_handler(signum, frame):
-    try:
-        os.remove('/tmp/overlay_${display_id}_process.pid')
-    except:
-        pass
-    window.close()
-    sys.exit(0)
-
-signal.signal(signal.SIGTERM, cleanup_handler)
-signal.signal(signal.SIGINT, cleanup_handler)
-
-# Run the application
-try:
-    app.run()
-except KeyboardInterrupt:
-    cleanup_handler(0, None)
-"
-✓ Overlay removed from display 1
-🔅 Display 4: unfocused - creating overlay
-🔅 Display 5: unfocused - creating overlay
-Creating overlay on display 5
-  Display 5 coordinates: x=2056, y=352, size=1440x2560
-✓ Successfully created overlay on display 5
-DEBUG: Testing coordinates (20, 44) for app: Terminal
-DEBUG: Converted AppleScript coords (20, 44) to Cocoa coords (20, 1285.0)
-DEBUG: Testing point (20, 1285.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Point (20, 1285.0) is inside display 1
-DEBUG: Detected display: 1
-DEBUG: Testing coordinates (20, 44) for app: Terminal
-DEBUG: Converted AppleScript coords (20, 44) to Cocoa coords (20, 1285.0)
-DEBUG: Testing point (20, 1285.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Point (20, 1285.0) is inside display 1
-DEBUG: Detected display: 1
-DEBUG: Testing coordinates (20, 44) for app: Terminal
-DEBUG: Converted AppleScript coords (20, 44) to Cocoa coords (20, 1285.0)
-DEBUG: Testing point (20, 1285.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Point (20, 1285.0) is inside display 1
-DEBUG: Detected display: 1
-DEBUG: Testing coordinates (20, 44) for app: Terminal
-DEBUG: Converted AppleScript coords (20, 44) to Cocoa coords (20, 1285.0)
-DEBUG: Testing point (20, 1285.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Point (20, 1285.0) is inside display 1
-DEBUG: Detected display: 1
-DEBUG: Testing coordinates (20, 44) for app: Terminal
-DEBUG: Converted AppleScript coords (20, 44) to Cocoa coords (20, 1285.0)
-DEBUG: Testing point (20, 1285.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Point (20, 1285.0) is inside display 1
-DEBUG: Detected display: 1
-DEBUG: Testing coordinates (20, 44) for app: Terminal
-DEBUG: Converted AppleScript coords (20, 44) to Cocoa coords (20, 1285.0)
-DEBUG: Testing point (20, 1285.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Point (20, 1285.0) is inside display 1
-DEBUG: Detected display: 1
-DEBUG: Testing coordinates (20, 44) for app: Terminal
-DEBUG: Converted AppleScript coords (20, 44) to Cocoa coords (20, 1285.0)
-DEBUG: Testing point (20, 1285.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Point (20, 1285.0) is inside display 1
-DEBUG: Detected display: 1
-DEBUG: Testing coordinates (20, 44) for app: Terminal
-DEBUG: Converted AppleScript coords (20, 44) to Cocoa coords (20, 1285.0)
-DEBUG: Testing point (20, 1285.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Point (20, 1285.0) is inside display 1
-DEBUG: Detected display: 1
-DEBUG: Testing coordinates (-504, -1415) for app: Cursor
-DEBUG: Converted AppleScript coords (-504, -1415) to Cocoa coords (-504, 2744.0)
-DEBUG: Testing point (-504, 2744.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Point (-504, 2744.0) is inside display 4
-DEBUG: Detected display: 4
-
-15:46:31 - Focus changed: Cursor on display 4 (window at -504,-1415)
-🔅 Display 1: unfocused - creating overlay
-Creating overlay on display 1
-  Display 1 coordinates: x=0, y=25, size=2056x1329
-✓ Successfully created overlay on display 1
-🔆 Display 4: FOCUSED - removing overlay
-Removing overlay from display 4
-./monitor_dimmer.sh: line 289: 81290 Killed: 9               python3 -c "
-import sys
-import os
-import signal
-import time
-try:
-    from Cocoa import *
-    from Foundation import *
-except ImportError:
-    print('PyObjC not available - falling back to simple overlay')
-    # Simple fallback - just maintain a process for tracking
-    pid = os.getpid()
-    with open('/tmp/overlay_${display_id}_process.pid', 'w') as f:
-        f.write(str(pid))
-    
-    def cleanup_handler(signum, frame):
-        try:
-            os.remove('/tmp/overlay_${display_id}_process.pid')
-        except:
-            pass
-        sys.exit(0)
-    
-    signal.signal(signal.SIGTERM, cleanup_handler)
-    signal.signal(signal.SIGINT, cleanup_handler)
-    
-    while True:
-        time.sleep(1)
-
-# Create native overlay window using Cocoa with real display coordinates
-app = NSApplication.sharedApplication()
-
-# Create window using actual display coordinates
-window_rect = NSMakeRect($x_pos, $adjusted_y, $screen_width, $((screen_height - (adjusted_y - y_pos))))
-window = NSWindow.alloc().initWithContentRect_styleMask_backing_defer_(
-    window_rect,
-    NSWindowStyleMaskBorderless,
-    NSBackingStoreBuffered,
-    False
-)
-
-# Configure window for overlay
-window.setLevel_(NSFloatingWindowLevel)  # Always on top
-window.setOpaque_(False)  # Allow transparency
-window.setAlphaValue_($OVERLAY_OPACITY)  # Set transparency
-window.setBackgroundColor_(NSColor.blackColor())  # Black background
-window.setIgnoresMouseEvents_(True)  # Click-through!
-window.setAcceptsMouseMovedEvents_(False)
-window.setHasShadow_(False)
-
-# Show window
-window.makeKeyAndOrderFront_(None)
-
-# Save PID for cleanup
-pid = os.getpid()
-with open('/tmp/overlay_${display_id}_process.pid', 'w') as f:
-    f.write(str(pid))
-
-# Handle cleanup
-def cleanup_handler(signum, frame):
-    try:
-        os.remove('/tmp/overlay_${display_id}_process.pid')
-    except:
-        pass
-    window.close()
-    sys.exit(0)
-
-signal.signal(signal.SIGTERM, cleanup_handler)
-signal.signal(signal.SIGINT, cleanup_handler)
-
-# Run the application
-try:
-    app.run()
-except KeyboardInterrupt:
-    cleanup_handler(0, None)
-"
-✓ Overlay removed from display 4
-🔅 Display 5: unfocused - creating overlay
-DEBUG: Testing coordinates (-504, -1415) for app: Cursor
-DEBUG: Converted AppleScript coords (-504, -1415) to Cocoa coords (-504, 2744.0)
-DEBUG: Testing point (-504, 2744.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Point (-504, 2744.0) is inside display 4
-DEBUG: Detected display: 4
-DEBUG: Testing coordinates (-504, -1415) for app: Cursor
-DEBUG: Converted AppleScript coords (-504, -1415) to Cocoa coords (-504, 2744.0)
-DEBUG: Testing point (-504, 2744.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Point (-504, 2744.0) is inside display 4
-DEBUG: Detected display: 4
-DEBUG: Testing coordinates (-504, -1415) for app: Cursor
-DEBUG: Converted AppleScript coords (-504, -1415) to Cocoa coords (-504, 2744.0)
-DEBUG: Testing point (-504, 2744.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Point (-504, 2744.0) is inside display 4
-DEBUG: Detected display: 4
-DEBUG: Testing coordinates (-504, -1415) for app: Cursor
-DEBUG: Converted AppleScript coords (-504, -1415) to Cocoa coords (-504, 2744.0)
-DEBUG: Testing point (-504, 2744.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Point (-504, 2744.0) is inside display 4
-DEBUG: Detected display: 4
-DEBUG: Testing coordinates (-504, -1415) for app: Cursor
-DEBUG: Converted AppleScript coords (-504, -1415) to Cocoa coords (-504, 2744.0)
-DEBUG: Testing point (-504, 2744.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Point (-504, 2744.0) is inside display 4
-DEBUG: Detected display: 4
-DEBUG: Testing coordinates (20, 44) for app: Terminal
-DEBUG: Converted AppleScript coords (20, 44) to Cocoa coords (20, 1285.0)
-DEBUG: Testing point (20, 1285.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Point (20, 1285.0) is inside display 1
-DEBUG: Detected display: 1
-
-15:46:40 - Focus changed: Terminal on display 1 (window at 20,44)
-🔆 Display 1: FOCUSED - removing overlay
-Removing overlay from display 1
-./monitor_dimmer.sh: line 289: 81679 Killed: 9               python3 -c "
-import sys
-import os
-import signal
-import time
-try:
-    from Cocoa import *
-    from Foundation import *
-except ImportError:
-    print('PyObjC not available - falling back to simple overlay')
-    # Simple fallback - just maintain a process for tracking
-    pid = os.getpid()
-    with open('/tmp/overlay_${display_id}_process.pid', 'w') as f:
-        f.write(str(pid))
-    
-    def cleanup_handler(signum, frame):
-        try:
-            os.remove('/tmp/overlay_${display_id}_process.pid')
-        except:
-            pass
-        sys.exit(0)
-    
-    signal.signal(signal.SIGTERM, cleanup_handler)
-    signal.signal(signal.SIGINT, cleanup_handler)
-    
-    while True:
-        time.sleep(1)
-
-# Create native overlay window using Cocoa with real display coordinates
-app = NSApplication.sharedApplication()
-
-# Create window using actual display coordinates
-window_rect = NSMakeRect($x_pos, $adjusted_y, $screen_width, $((screen_height - (adjusted_y - y_pos))))
-window = NSWindow.alloc().initWithContentRect_styleMask_backing_defer_(
-    window_rect,
-    NSWindowStyleMaskBorderless,
-    NSBackingStoreBuffered,
-    False
-)
-
-# Configure window for overlay
-window.setLevel_(NSFloatingWindowLevel)  # Always on top
-window.setOpaque_(False)  # Allow transparency
-window.setAlphaValue_($OVERLAY_OPACITY)  # Set transparency
-window.setBackgroundColor_(NSColor.blackColor())  # Black background
-window.setIgnoresMouseEvents_(True)  # Click-through!
-window.setAcceptsMouseMovedEvents_(False)
-window.setHasShadow_(False)
-
-# Show window
-window.makeKeyAndOrderFront_(None)
-
-# Save PID for cleanup
-pid = os.getpid()
-with open('/tmp/overlay_${display_id}_process.pid', 'w') as f:
-    f.write(str(pid))
-
-# Handle cleanup
-def cleanup_handler(signum, frame):
-    try:
-        os.remove('/tmp/overlay_${display_id}_process.pid')
-    except:
-        pass
-    window.close()
-    sys.exit(0)
-
-signal.signal(signal.SIGTERM, cleanup_handler)
-signal.signal(signal.SIGINT, cleanup_handler)
-
-# Run the application
-try:
-    app.run()
-except KeyboardInterrupt:
-    cleanup_handler(0, None)
-"
-✓ Overlay removed from display 1
-🔅 Display 4: unfocused - creating overlay
-Creating overlay on display 4
-  Display 4 coordinates: x=-504, y=1329, size=2560x1440
-✓ Successfully created overlay on display 4
-🔅 Display 5: unfocused - creating overlay
-DEBUG: Testing coordinates (20, 44) for app: Terminal
-DEBUG: Converted AppleScript coords (20, 44) to Cocoa coords (20, 1285.0)
-DEBUG: Testing point (20, 1285.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Point (20, 1285.0) is inside display 1
-DEBUG: Detected display: 1
-DEBUG: Testing coordinates (2056, -1583) for app: Python
-DEBUG: Converted AppleScript coords (2056, -1583) to Cocoa coords (2056, 2912.0)
-DEBUG: Testing point (2056, 2912.0) against 3 displays:
-DEBUG: Display 1: bounds=(0.0, 0.0) to (2056.0, 1329.0)
-DEBUG: Display 4: bounds=(-504.0, 1329.0) to (2056.0, 2769.0)
-DEBUG: Display 5: bounds=(2056.0, 352.0) to (3496.0, 2912.0)
-DEBUG: Point (2056, 2912.0) not found in any display, defaulting to 1
-DEBUG: Detected display: 1
-D

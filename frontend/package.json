@@ -1,0 +1,136 @@
+{
+  "name": "quickdimmer",
+  "version": "1.0.0",
+  "description": "Monitor Focus Dimming Tool - Automatically dims unfocused displays",
+  "main": "main.js",
+  "author": "QuickDimmer",
+  "license": "MIT",
+  "homepage": "./",
+  "scripts": {
+    "start": "electron .",
+    "dev": "concurrently \"python3 ../backend/main.py\" \"wait-on http://localhost:8080 && electron .\" --kill-others",
+    "dev-backend": "python3 ../backend/main.py",
+    "dev-frontend": "wait-on http://localhost:8080 && electron .",
+    "build": "electron-builder",
+    "build-mac": "electron-builder --mac",
+    "dist": "npm run build",
+    "pack": "electron-builder --dir",
+    "postinstall": "electron-builder install-app-deps",
+    "clean": "rimraf dist build"
+  },
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.6.4",
+    "concurrently": "^8.2.2",
+    "wait-on": "^7.2.0",
+    "rimraf": "^5.0.5"
+  },
+  "dependencies": {
+    "electron-store": "^8.1.0",
+    "electron-window-state": "^5.0.3"
+  },
+  "build": {
+    "appId": "com.quickdimmer.app",
+    "productName": "QuickDimmer",
+    "copyright": "Copyright © 2024 QuickDimmer",
+    "directories": {
+      "output": "../dist",
+      "buildResources": "assets"
+    },
+    "files": [
+      "main.js",
+      "renderer/**/*",
+      "assets/**/*",
+      "../backend/**/*.py",
+      "../backend/requirements.txt",
+      "!../backend/__pycache__",
+      "!../backend/**/*.pyc"
+    ],
+    "extraResources": [
+      {
+        "from": "../backend",
+        "to": "backend",
+        "filter": [
+          "**/*.py",
+          "requirements.txt",
+          "!__pycache__",
+          "!**/*.pyc"
+        ]
+      }
+    ],
+    "mac": {
+      "category": "public.app-category.utilities",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "arm64",
+            "x64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "arm64",
+            "x64"
+          ]
+        }
+      ],
+      "icon": "assets/icon.icns",
+      "entitlements": "assets/entitlements.mac.plist",
+      "entitlementsInherit": "assets/entitlements.mac.plist",
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "extendInfo": {
+        "LSUIElement": true,
+        "NSRequiresAquaSystemAppearance": false,
+        "NSAppleEventsUsageDescription": "QuickDimmer needs to detect focused windows to dim unfocused displays.",
+        "NSSystemAdministrationUsageDescription": "QuickDimmer needs to access window information to detect which display has focus."
+      }
+    },
+    "dmg": {
+      "title": "QuickDimmer ${version}",
+      "icon": "assets/icon.icns",
+      "iconSize": 80,
+      "window": {
+        "width": 540,
+        "height": 380
+      },
+      "contents": [
+        {
+          "x": 410,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 130,
+          "y": 150,
+          "type": "file",
+          "path": "QuickDimmer.app"
+        }
+      ]
+    },
+    "publish": {
+      "provider": "generic"
+    },
+    "afterSign": "scripts/notarize.js"
+  },
+  "keywords": [
+    "monitor",
+    "display",
+    "dimming",
+    "focus",
+    "productivity",
+    "macos",
+    "utility"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/quickdimmer/quickdimmer.git"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  }
+} 

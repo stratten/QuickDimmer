@@ -662,7 +662,7 @@ document.addEventListener('DOMContentLoaded', () => {
 ## Future Enhancements
 - Global hotkeys for quick toggle
 - Multiple opacity presets
-- Per-app dimming rules
+- Custom opacity setting 
 - Menu bar controls
 - Auto-start on login
 - Display arrangement visual

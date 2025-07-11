@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickDimmer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header Section -->
+        <header class="app-header">
+            <div class="app-title">
+                <h1>QuickDimmer</h1>
+                <p class="app-subtitle">Monitor Focus Dimming Tool</p>
+            </div>
+            <div class="connection-status" id="connectionStatus">
+                <span class="status-dot" id="statusDot"></span>
+                <span class="status-text" id="statusText">Connecting...</span>
+            </div>
+        </header>
+
+        <!-- Main Controls Section -->
+        <main class="main-content">
+            <!-- Power Toggle Section -->
+            <section class="control-section power-section">
+                <div class="section-header">
+                    <h2>Dimming Control</h2>
+                </div>
+                <div class="power-control">
+                    <button id="toggleBtn" class="power-button" disabled>
+                        <span class="power-icon">⏻</span>
+                        <span class="power-text" id="powerText">Enable Dimming</span>
+                    </button>
+                    <p class="power-description" id="powerDescription">
+                        Automatically dims unfocused displays
+                    </p>
+                </div>
+            </section>
+
+            <!-- Opacity Control Section -->
+            <section class="control-section opacity-section">
+                <div class="section-header">
+                    <h2>Opacity Settings</h2>
+                </div>
+                <div class="opacity-control">
+                    <div class="slider-container">
+                        <label for="opacitySlider" class="slider-label">
+                            Dimming Intensity
+                        </label>
+                        <div class="slider-wrapper">
+                            <span class="slider-min">10%</span>
+                            <input type="range" 
+                                   id="opacitySlider" 
+                                   class="opacity-slider"
+                                   min="0.1" 
+                                   max="1.0" 
+                                   step="0.05" 
+                                   value="0.7"
+                                   disabled>
+                            <span class="slider-max">100%</span>
+                        </div>
+                        <div class="slider-value">
+                            <span id="opacityValue">70%</span>
+                            <span class="slider-description">overlay darkness</span>
+                        </div>
+                    </div>
+                    <div class="opacity-presets">
+                        <button class="preset-btn" data-opacity="0.3" disabled>Light</button>
+                        <button class="preset-btn" data-opacity="0.7" disabled>Medium</button>
+                        <button class="preset-btn" data-opacity="0.9" disabled>Dark</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Per-Monitor Controls Section -->
+            <section class="control-section monitors-section">
+                <div class="section-header">
+                    <h2>Per-Monitor Settings</h2>
+                    <button id="toggleMonitorSettings" class="expand-btn">▼</button>
+                </div>
+                <div class="monitor-settings" id="monitorSettings" style="display: none;">
+                    <div class="monitor-controls-container" id="monitorControlsContainer">
+                        <div class="loading-monitors">
+                            <div class="loading-spinner"></div>
+                            <span>Loading monitor settings...</span>
+                        </div>
+                    </div>
+                    <div class="monitor-actions">
+                        <button id="applyToAllMonitors" class="action-btn primary" disabled>
+                            Apply Current Settings to All
+                        </button>
+                        <button id="resetAllMonitors" class="action-btn secondary" disabled>
+                            Reset All to Defaults
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Display Status Section -->
+            <section class="control-section displays-section">
+                <div class="section-header">
+                    <h2>Display Status</h2>
+                    <button id="refreshDisplays" class="refresh-btn" disabled>↻</button>
+                </div>
+                <div class="displays-container" id="displaysContainer">
+                    <div class="loading-displays">
+                        <div class="loading-spinner"></div>
+                        <span>Loading display information...</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Status Information Section -->
+            <section class="control-section status-section">
+                <div class="section-header">
+                    <h2>Status</h2>
+                </div>
+                <div class="status-grid">
+                    <div class="status-item">
+                        <span class="status-label">Current Status:</span>
+                        <span class="status-value" id="currentStatus">Initializing...</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Focused Display:</span>
+                        <span class="status-value" id="focusedDisplay">Unknown</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Total Displays:</span>
+                        <span class="status-value" id="totalDisplays">0</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Active Overlays:</span>
+                        <span class="status-value" id="activeOverlays">0</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Advanced Settings Section -->
+            <section class="control-section settings-section">
+                <div class="section-header">
+                    <h2>Settings</h2>
+                    <button id="toggleAdvanced" class="expand-btn">▼</button>
+                </div>
+                <div class="advanced-settings" id="advancedSettings" style="display: none;">
+                    <div class="setting-item">
+                        <label class="setting-label">
+                            <input type="checkbox" id="startOnLogin" disabled>
+                            Start QuickDimmer on login
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <label class="setting-label">
+                            <input type="checkbox" id="keepWindowOpen">
+                            Keep window open (don't auto-hide)
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <label class="setting-label">
+                            <input type="checkbox" id="debugMode">
+                            Enable debug logging
+                        </label>
+                    </div>
+                    <div class="setting-actions">
+                        <button id="resetSettings" class="action-btn secondary" disabled>
+                            Reset to Defaults
+                        </button>
+                        <button id="exportSettings" class="action-btn secondary" disabled>
+                            Export Settings
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Monitor Control Template (hidden) -->
+        <template id="monitorControlTemplate">
+            <div class="monitor-control" data-display-id="">
+                <div class="monitor-header">
+                    <div class="monitor-info">
+                        <h3 class="monitor-title">Display <span class="monitor-id"></span></h3>
+                        <span class="monitor-resolution"></span>
+                        <span class="monitor-status"></span>
+                    </div>
+                    <div class="monitor-toggle">
+                        <label class="toggle-switch">
+                            <input type="checkbox" class="monitor-enabled">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="monitor-controls">
+                    <div class="monitor-opacity-control">
+                        <label class="opacity-label">
+                            Opacity: <span class="monitor-opacity-value">70%</span>
+                        </label>
+                        <div class="opacity-slider-container">
+                            <span class="opacity-min">10%</span>
+                            <input type="range" 
+                                   class="monitor-opacity-slider"
+                                   min="0.1" 
+                                   max="1.0" 
+                                   step="0.05" 
+                                   value="0.7">
+                            <span class="opacity-max">100%</span>
+                        </div>
+                        <div class="monitor-opacity-presets">
+                            <button class="monitor-preset-btn" data-opacity="0.3">Light</button>
+                            <button class="monitor-preset-btn" data-opacity="0.7">Medium</button>
+                            <button class="monitor-preset-btn" data-opacity="0.9">Dark</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <div class="footer-content">
+                <span class="version-info">Version 1.0.0</span>
+                <div class="footer-actions">
+                    <button id="aboutBtn" class="footer-btn">About</button>
+                    <button id="helpBtn" class="footer-btn">Help</button>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Error/Message Display -->
+        <div class="message-container" id="messageContainer" style="display: none;">
+            <div class="message" id="messageContent">
+                <span class="message-icon" id="messageIcon">ℹ</span>
+                <span class="message-text" id="messageText"></span>
+                <button class="message-close" id="messageClose">×</button>
+            </div>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+            <div class="loading-content">
+                <div class="loading-spinner large"></div>
+                <p class="loading-text">Connecting to QuickDimmer backend...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+</html> 
