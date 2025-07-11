@@ -1,0 +1,672 @@
+QuickDimmer: Python + Electron Architecture Plan
+================================================
+
+## Overview
+Rewrite the current bash script as a clean Python + Electron application.
+- Python backend: Native macOS display management using PyObjC
+- Electron frontend: Modern UI for controls, settings, and status
+- Communication: HTTP/WebSocket API between Python and Electron
+
+## Architecture Benefits
+✅ Single Python process - no more process spawning/killing
+✅ Native state management - overlays as Python objects
+✅ Modern UI - settings, opacity controls, display arrangement
+✅ Better error handling - try/catch throughout
+✅ Easier maintenance - clear separation of concerns
+✅ Extensible - easy to add features like hotkeys, menu bar icon
+✅ Professional packaging - can be distributed as .app bundle
+
+## Project Structure
+```
+QuickDimmer/
+├── backend/
+│   ├── main.py                 # Python backend entry point
+│   ├── display_manager.py      # Core display/overlay logic
+│   ├── focus_detector.py       # Window focus detection
+│   ├── api_server.py          # HTTP API for frontend communication
+│   └── requirements.txt       # Python dependencies
+├── frontend/
+│   ├── package.json           # Electron app config
+│   ├── main.js               # Electron main process
+│   ├── renderer/
+│   │   ├── index.html        # Main UI
+│   │   ├── app.js           # Frontend JavaScript
+│   │   └── styles.css       # UI styling
+│   └── assets/              # Icons, images
+├── build/                    # Build scripts and configs
+├── dist/                    # Built application
+└── README.md
+```
+
+## Python Backend (backend/)
+
+### main.py - Application Entry Point
+```python
+#!/usr/bin/env python3
+"""
+QuickDimmer Backend - Monitor Focus Dimming Service
+Provides HTTP API for Electron frontend
+"""
+import asyncio
+from display_manager import DisplayManager
+from api_server import APIServer
+
+class QuickDimmerApp:
+    def __init__(self):
+        self.display_manager = DisplayManager()
+        self.api_server = APIServer(self.display_manager)
+    
+    async def start(self):
+        # Start display monitoring
+        await self.display_manager.start_monitoring()
+        # Start API server for frontend
+        await self.api_server.start()
+    
+    def stop(self):
+        self.display_manager.stop_monitoring()
+        self.api_server.stop()
+
+if __name__ == "__main__":
+    app = QuickDimmerApp()
+    try:
+        asyncio.run(app.start())
+    except KeyboardInterrupt:
+        app.stop()
+```
+
+### display_manager.py - Core Display Logic
+```python
+from Cocoa import NSApplication, NSScreen, NSWindow, NSColor
+from Foundation import NSTimer
+import os
+
+class DisplayManager:
+    def __init__(self):
+        self.app = NSApplication.sharedApplication()
+        self.app.setActivationPolicy_(NSApplicationActivationPolicyAccessory)
+        self.overlays = {}  # display_id: NSWindow
+        self.display_bounds = {}  # display_id: (x, y, width, height)
+        self.current_focused_display = None
+        self.opacity = 0.7
+        self.enabled = True
+        
+    def cache_display_info(self):
+        """Cache display bounds once at startup"""
+        screens = NSScreen.screens()
+        for screen in screens:
+            frame = screen.frame()
+            device_desc = screen.deviceDescription()
+            display_id = device_desc.get('NSScreenNumber', 1)
+            self.display_bounds[display_id] = (
+                int(frame.origin.x),
+                int(frame.origin.y), 
+                int(frame.size.width),
+                int(frame.size.height)
+            )
+    
+    def create_overlay(self, display_id):
+        """Create overlay window for specific display"""
+        if display_id in self.overlays:
+            return  # Already exists
+            
+        x, y, width, height = self.display_bounds[display_id]
+        
+        # Create borderless window
+        window_rect = NSMakeRect(x, y, width, height)
+        window = NSWindow.alloc().initWithContentRect_styleMask_backing_defer_(
+            window_rect,
+            NSWindowStyleMaskBorderless,
+            NSBackingStoreBuffered,
+            False
+        )
+        
+        # Configure overlay properties
+        window.setLevel_(NSFloatingWindowLevel)
+        window.setOpaque_(False)
+        window.setAlphaValue_(self.opacity)
+        window.setBackgroundColor_(NSColor.blackColor())
+        window.setIgnoresMouseEvents_(True)
+        window.setAcceptsMouseMovedEvents_(False)
+        window.setHasShadow_(False)
+        
+        window.makeKeyAndOrderFront_(None)
+        self.overlays[display_id] = window
+    
+    def remove_overlay(self, display_id):
+        """Remove overlay from specific display"""
+        if display_id in self.overlays:
+            self.overlays[display_id].close()
+            del self.overlays[display_id]
+    
+    def update_overlays(self, focused_display_id):
+        """Update overlays based on focused display"""
+        if not self.enabled:
+            return
+            
+        for display_id in self.display_bounds:
+            if display_id == focused_display_id:
+                self.remove_overlay(display_id)
+            else:
+                self.create_overlay(display_id)
+    
+    def set_opacity(self, opacity):
+        """Update overlay opacity"""
+        self.opacity = opacity
+        for window in self.overlays.values():
+            window.setAlphaValue_(opacity)
+    
+    def toggle_enabled(self):
+        """Toggle dimming on/off"""
+        self.enabled = not self.enabled
+        if not self.enabled:
+            # Remove all overlays
+            for display_id in list(self.overlays.keys()):
+                self.remove_overlay(display_id)
+    
+    async def start_monitoring(self):
+        """Start monitoring focus changes"""
+        self.cache_display_info()
+        # Use NSTimer for periodic focus checking
+        # Implementation depends on async integration
+    
+    def stop_monitoring(self):
+        """Stop monitoring and cleanup"""
+        for display_id in list(self.overlays.keys()):
+            self.remove_overlay(display_id)
+```
+
+### focus_detector.py - Window Focus Detection
+```python
+from Cocoa import NSWorkspace, NSScreen
+import subprocess
+
+class FocusDetector:
+    def __init__(self, display_manager):
+        self.display_manager = display_manager
+        self.workspace = NSWorkspace.sharedWorkspace()
+        
+    def get_focused_display(self):
+        """Detect which display has the focused window"""
+        # Get frontmost app and window position
+        app_info = self._get_focused_app_info()
+        if not app_info:
+            return 1
+            
+        x, y = app_info['window_position']
+        
+        # Convert coordinates and find containing display
+        return self._find_display_for_position(x, y)
+    
+    def _get_focused_app_info(self):
+        """Get focused app and window position using AppleScript"""
+        script = '''
+        tell application "System Events"
+            set frontApp to first application process whose frontmost is true
+            set appName to name of frontApp
+            try
+                set frontWindow to first window of frontApp
+                set {x, y} to position of frontWindow
+                return appName & "|" & x & "," & y
+            on error
+                return appName & "|0,0"
+            end try
+        end tell
+        '''
+        result = subprocess.run(['osascript', '-e', script], 
+                              capture_output=True, text=True)
+        if result.returncode != 0:
+            return None
+            
+        parts = result.stdout.strip().split('|')
+        app_name = parts[0]
+        coords = parts[1].split(',')
+        return {
+            'app_name': app_name,
+            'window_position': (int(coords[0]), int(coords[1]))
+        }
+    
+    def _find_display_for_position(self, x, y):
+        """Find which display contains the given position"""
+        # Convert AppleScript to Cocoa coordinates
+        main_height = self.display_manager.display_bounds[1][3]  # Assuming display 1 is main
+        cocoa_y = main_height - y
+        
+        for display_id, (left, top, width, height) in self.display_manager.display_bounds.items():
+            right = left + width
+            bottom = top + height
+            
+            if left <= x < right and top <= cocoa_y < bottom:
+                return display_id
+                
+        return 1  # Default to main display
+```
+
+### api_server.py - HTTP API for Frontend
+```python
+from aiohttp import web, WSMsgType
+import json
+import asyncio
+
+class APIServer:
+    def __init__(self, display_manager):
+        self.display_manager = display_manager
+        self.app = web.Application()
+        self.setup_routes()
+        self.websockets = set()
+        
+    def setup_routes(self):
+        self.app.router.add_get('/', self.status)
+        self.app.router.add_post('/opacity', self.set_opacity)
+        self.app.router.add_post('/toggle', self.toggle_enabled)
+        self.app.router.add_get('/displays', self.get_displays)
+        self.app.router.add_get('/ws', self.websocket_handler)
+    
+    async def status(self, request):
+        return web.json_response({
+            'enabled': self.display_manager.enabled,
+            'opacity': self.display_manager.opacity,
+            'focused_display': self.display_manager.current_focused_display,
+            'displays': len(self.display_manager.display_bounds)
+        })
+    
+    async def set_opacity(self, request):
+        data = await request.json()
+        opacity = float(data['opacity'])
+        self.display_manager.set_opacity(opacity)
+        await self.broadcast({'type': 'opacity_changed', 'opacity': opacity})
+        return web.json_response({'status': 'ok'})
+    
+    async def toggle_enabled(self, request):
+        self.display_manager.toggle_enabled()
+        await self.broadcast({
+            'type': 'enabled_changed', 
+            'enabled': self.display_manager.enabled
+        })
+        return web.json_response({'enabled': self.display_manager.enabled})
+    
+    async def get_displays(self, request):
+        displays = []
+        for display_id, bounds in self.display_manager.display_bounds.items():
+            displays.append({
+                'id': display_id,
+                'bounds': bounds,
+                'has_overlay': display_id in self.display_manager.overlays
+            })
+        return web.json_response({'displays': displays})
+    
+    async def websocket_handler(self, request):
+        ws = web.WebSocketResponse()
+        await ws.prepare(request)
+        self.websockets.add(ws)
+        
+        try:
+            async for msg in ws:
+                if msg.type == WSMsgType.ERROR:
+                    break
+        finally:
+            self.websockets.discard(ws)
+        
+        return ws
+    
+    async def broadcast(self, data):
+        """Send data to all connected WebSocket clients"""
+        if self.websockets:
+            message = json.dumps(data)
+            await asyncio.gather(
+                *[ws.send_str(message) for ws in self.websockets],
+                return_exceptions=True
+            )
+    
+    async def start(self):
+        runner = web.AppRunner(self.app)
+        await runner.setup()
+        site = web.TCPSite(runner, 'localhost', 8080)
+        await site.start()
+    
+    def stop(self):
+        # Cleanup implementation
+        pass
+```
+
+## Electron Frontend (frontend/)
+
+### package.json - Electron Configuration
+```json
+{
+  "name": "quickdimmer",
+  "version": "1.0.0",
+  "description": "Monitor Focus Dimming Tool",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "dev": "concurrently \"python3 ../backend/main.py\" \"electron .\""
+  },
+  "devDependencies": {
+    "electron": "^latest",
+    "electron-builder": "^latest",
+    "concurrently": "^latest"
+  },
+  "dependencies": {
+    "@electron/remote": "^latest"
+  },
+  "build": {
+    "appId": "com.quickdimmer.app",
+    "productName": "QuickDimmer",
+    "directories": {
+      "output": "../dist"
+    },
+    "mac": {
+      "category": "public.app-category.utilities",
+      "target": "dmg"
+    }
+  }
+}
+```
+
+### main.js - Electron Main Process
+```javascript
+const { app, BrowserWindow, Menu, Tray } = require('electron');
+const path = require('path');
+const { spawn } = require('child_process');
+
+class QuickDimmerElectron {
+    constructor() {
+        this.mainWindow = null;
+        this.tray = null;
+        this.pythonProcess = null;
+    }
+
+    createWindow() {
+        this.mainWindow = new BrowserWindow({
+            width: 400,
+            height: 600,
+            webPreferences: {
+                nodeIntegration: true,
+                contextIsolation: false
+            },
+            titleBarStyle: 'hiddenInset',
+            show: false
+        });
+
+        this.mainWindow.loadFile('renderer/index.html');
+        
+        // Hide instead of close
+        this.mainWindow.on('close', (event) => {
+            event.preventDefault();
+            this.mainWindow.hide();
+        });
+    }
+
+    createTray() {
+        this.tray = new Tray(path.join(__dirname, 'assets/icon.png'));
+        
+        const contextMenu = Menu.buildFromTemplate([
+            { label: 'Show QuickDimmer', click: () => this.mainWindow.show() },
+            { label: 'Enable/Disable', click: () => this.toggleDimming() },
+            { type: 'separator' },
+            { label: 'Quit', click: () => this.quit() }
+        ]);
+        
+        this.tray.setContextMenu(contextMenu);
+        this.tray.setToolTip('QuickDimmer - Monitor Focus Dimming');
+    }
+
+    startPythonBackend() {
+        const pythonPath = path.join(__dirname, '../backend/main.py');
+        this.pythonProcess = spawn('python3', [pythonPath], {
+            stdio: 'inherit'
+        });
+        
+        this.pythonProcess.on('error', (err) => {
+            console.error('Failed to start Python backend:', err);
+        });
+    }
+
+    async toggleDimming() {
+        try {
+            const response = await fetch('http://localhost:8080/toggle', {
+                method: 'POST'
+            });
+            const data = await response.json();
+            // Update tray icon/menu based on state
+        } catch (err) {
+            console.error('Failed to toggle dimming:', err);
+        }
+    }
+
+    quit() {
+        if (this.pythonProcess) {
+            this.pythonProcess.kill();
+        }
+        app.quit();
+    }
+
+    async init() {
+        await app.whenReady();
+        
+        this.createWindow();
+        this.createTray();
+        this.startPythonBackend();
+        
+        // Wait for backend to start
+        setTimeout(() => {
+            this.mainWindow.show();
+        }, 2000);
+    }
+}
+
+const quickDimmer = new QuickDimmerElectron();
+quickDimmer.init();
+```
+
+### renderer/index.html - Main UI
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>QuickDimmer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>QuickDimmer</h1>
+            <p>Monitor Focus Dimming Tool</p>
+        </header>
+
+        <main>
+            <section class="status">
+                <div class="status-indicator" id="status"></div>
+                <button id="toggleBtn" class="toggle-btn">Enable</button>
+            </section>
+
+            <section class="controls">
+                <div class="control-group">
+                    <label for="opacity">Opacity</label>
+                    <input type="range" id="opacity" min="0.1" max="1.0" step="0.1" value="0.7">
+                    <span id="opacityValue">70%</span>
+                </div>
+            </section>
+
+            <section class="displays">
+                <h3>Displays</h3>
+                <div id="displayList"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+```
+
+### renderer/app.js - Frontend Logic
+```javascript
+class QuickDimmerUI {
+    constructor() {
+        this.ws = null;
+        this.status = { enabled: false, opacity: 0.7 };
+        this.initElements();
+        this.connectWebSocket();
+        this.setupEventListeners();
+        this.updateUI();
+    }
+
+    initElements() {
+        this.statusEl = document.getElementById('status');
+        this.toggleBtn = document.getElementById('toggleBtn');
+        this.opacitySlider = document.getElementById('opacity');
+        this.opacityValue = document.getElementById('opacityValue');
+        this.displayList = document.getElementById('displayList');
+    }
+
+    connectWebSocket() {
+        this.ws = new WebSocket('ws://localhost:8080/ws');
+        
+        this.ws.onmessage = (event) => {
+            const data = JSON.parse(event.data);
+            this.handleWebSocketMessage(data);
+        };
+
+        this.ws.onclose = () => {
+            // Reconnect after delay
+            setTimeout(() => this.connectWebSocket(), 5000);
+        };
+    }
+
+    setupEventListeners() {
+        this.toggleBtn.addEventListener('click', () => this.toggleDimming());
+        this.opacitySlider.addEventListener('input', (e) => this.setOpacity(e.target.value));
+    }
+
+    async toggleDimming() {
+        try {
+            const response = await fetch('http://localhost:8080/toggle', {
+                method: 'POST'
+            });
+            const data = await response.json();
+            this.status.enabled = data.enabled;
+            this.updateUI();
+        } catch (err) {
+            console.error('Failed to toggle:', err);
+        }
+    }
+
+    async setOpacity(value) {
+        const opacity = parseFloat(value);
+        try {
+            await fetch('http://localhost:8080/opacity', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ opacity })
+            });
+            this.status.opacity = opacity;
+            this.updateUI();
+        } catch (err) {
+            console.error('Failed to set opacity:', err);
+        }
+    }
+
+    handleWebSocketMessage(data) {
+        switch (data.type) {
+            case 'enabled_changed':
+                this.status.enabled = data.enabled;
+                this.updateUI();
+                break;
+            case 'opacity_changed':
+                this.status.opacity = data.opacity;
+                this.updateUI();
+                break;
+        }
+    }
+
+    updateUI() {
+        // Update status indicator
+        this.statusEl.className = `status-indicator ${this.status.enabled ? 'active' : 'inactive'}`;
+        
+        // Update toggle button
+        this.toggleBtn.textContent = this.status.enabled ? 'Disable' : 'Enable';
+        this.toggleBtn.className = `toggle-btn ${this.status.enabled ? 'enabled' : 'disabled'}`;
+        
+        // Update opacity slider
+        this.opacitySlider.value = this.status.opacity;
+        this.opacityValue.textContent = `${Math.round(this.status.opacity * 100)}%`;
+    }
+
+    async loadDisplays() {
+        try {
+            const response = await fetch('http://localhost:8080/displays');
+            const data = await response.json();
+            this.renderDisplays(data.displays);
+        } catch (err) {
+            console.error('Failed to load displays:', err);
+        }
+    }
+
+    renderDisplays(displays) {
+        this.displayList.innerHTML = displays.map(display => `
+            <div class="display-item">
+                <span>Display ${display.id}</span>
+                <span class="display-status ${display.has_overlay ? 'dimmed' : 'active'}">
+                    ${display.has_overlay ? 'Dimmed' : 'Active'}
+                </span>
+            </div>
+        `).join('');
+    }
+}
+
+// Initialize when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    new QuickDimmerUI();
+});
+```
+
+## Development Workflow
+
+### Phase 1: Core Python Backend (1-2 days)
+1. Implement display_manager.py with overlay management
+2. Add focus_detector.py for window detection
+3. Create basic api_server.py for HTTP endpoints
+4. Test overlay creation/removal manually
+
+### Phase 2: Electron Frontend (1 day)
+1. Set up Electron app structure
+2. Create basic UI with toggle and opacity controls
+3. Implement WebSocket communication
+4. Add tray icon and menu
+
+### Phase 3: Integration & Polish (1 day)  
+1. Connect frontend to backend APIs
+2. Add error handling and reconnection logic
+3. Implement proper startup/shutdown coordination
+4. Test full workflow
+
+### Phase 4: Packaging & Distribution (1 day)
+1. Create build scripts for bundling Python + Electron
+2. Generate .app bundle for macOS
+3. Add app icon and metadata
+4. Create installer/DMG
+
+## Implementation Benefits
+
+✅ **Clean Architecture**: Clear separation between display logic and UI
+✅ **Modern UI**: Professional Electron interface with real-time updates  
+✅ **Extensible**: Easy to add features like hotkeys, presets, scheduling
+✅ **Maintainable**: Well-structured code in appropriate languages
+✅ **Professional**: Can be packaged and distributed as proper macOS app
+✅ **Performant**: Single Python process, no subprocess spawning
+✅ **Reliable**: Better error handling and state management
+
+## Future Enhancements
+- Global hotkeys for quick toggle
+- Multiple opacity presets
+- Per-app dimming rules
+- Menu bar controls
+- Auto-start on login
+- Display arrangement visual
+- Notification preferences
+- Export/import settings
+
+This architecture provides a solid foundation that's much cleaner than the current bash script while maintaining all functionality and adding significant extensibility for future features. 
