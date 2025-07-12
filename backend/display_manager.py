@@ -305,6 +305,12 @@ except Exception as e:
     def update_overlays(self, focused_display_id: int):
         """Update overlays based on focused display"""
         try:
+            # If dimming is globally disabled, remove all overlays and return
+            if not self.default_enabled:
+                for display_id in self.display_bounds:
+                    self.remove_overlay(display_id)
+                return
+            
             for display_id in self.display_bounds:
                 if display_id == focused_display_id:
                     # Remove overlay from focused display

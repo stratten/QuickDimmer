@@ -405,16 +405,97 @@ get_display_count() {
     system_profiler SPDisplaysDataType | grep -c "Resolution:"
 }
 
+# Function to handle disconnected displays
+handle_disconnected_displays() {
+    local -n current_displays_ref=$1
+    local -n last_focused_display_ref=$2
+    
+    # Get current available displays
+    local new_displays=($(get_available_displays))
+    
+    # Check if display list has changed
+    if [[ "${current_displays_ref[*]}" != "${new_displays[*]}" ]]; then
+        echo ""
+        echo "🔌 Display configuration changed!"
+        echo "Previous displays: ${current_displays_ref[*]}"
+        echo "Current displays: ${new_displays[*]}"
+        
+        # Find displays that were disconnected
+        local disconnected_displays=()
+        for old_display in "${current_displays_ref[@]}"; do
+            local found=false
+            for new_display in "${new_displays[@]}"; do
+                if [[ "$old_display" == "$new_display" ]]; then
+                    found=true
+                    break
+                fi
+            done
+            if [[ "$found" == false ]]; then
+                disconnected_displays+=("$old_display")
+            fi
+        done
+        
+        # Clean up overlays for disconnected displays
+        if [[ ${#disconnected_displays[@]} -gt 0 ]]; then
+            echo "🔌 Cleaning up overlays for disconnected displays: ${disconnected_displays[*]}"
+            for display_id in "${disconnected_displays[@]}"; do
+                echo "🧹 Removing overlay from disconnected display $display_id"
+                remove_overlay $display_id
+            done
+        fi
+        
+        # Check if the currently focused display was disconnected
+        local focused_display_disconnected=false
+        for disconnected_display in "${disconnected_displays[@]}"; do
+            if [[ "$disconnected_display" == "$last_focused_display_ref" ]]; then
+                focused_display_disconnected=true
+                break
+            fi
+        done
+        
+        # If focused display was disconnected, reset to primary display
+        if [[ "$focused_display_disconnected" == true ]]; then
+            echo "⚠️  Currently focused display $last_focused_display_ref was disconnected"
+            if [[ ${#new_displays[@]} -gt 0 ]]; then
+                last_focused_display_ref=${new_displays[0]}
+                echo "🔄 Switching focus to display $last_focused_display_ref"
+            else
+                echo "❌ No displays remaining!"
+                return 1
+            fi
+        fi
+        
+        # Update the available displays list
+        current_displays_ref=("${new_displays[@]}")
+        
+        # Recache display bounds since configuration changed
+        echo "🔄 Recaching display bounds..."
+        cache_display_bounds
+        
+        echo "✅ Display configuration updated"
+        echo ""
+        
+        # Return 1 to indicate display list changed (for caller to handle)
+        return 1
+    fi
+    
+    # No change in display configuration
+    return 0
+}
+
 # Main monitoring function
 monitor_and_dim() {
     local last_focused_display=0
     local available_displays=($(get_available_displays))
+    local display_check_counter=0
+    local display_check_interval=10  # Check for display changes every 10 cycles
     
     echo "=================== AUTO MONITOR DIMMER ==================="
     echo "Found ${#available_displays[@]} total displays"
     echo "Available displays: ${available_displays[*]}"
     echo "Focused display stays clear, others dimmed to 30% brightness"
     echo "Native Cocoa overlays - no app interference, click-through enabled"
+    echo "Monitors display disconnection and automatically cleans up overlays"
     echo "Press Ctrl+C to stop and remove all overlays"
     echo "==========================================================="
     
@@ -427,6 +508,24 @@ monitor_and_dim() {
     cache_display_bounds
     
     while true; do
+        # Periodically check for display changes (every 10 seconds by default)
+        if [[ $display_check_counter -ge $display_check_interval ]]; then
+            display_check_counter=0
+            
+            # Check for disconnected displays
+            if ! handle_disconnected_displays available_displays last_focused_display; then
+                # Display configuration changed
+                if [[ ${#available_displays[@]} -eq 0 ]]; then
+                    echo "❌ All displays disconnected. Exiting."
+                    break
+                fi
+                
+                # Force a focus check since display configuration changed
+                last_focused_display=0
+                echo "🔄 Forcing focus recheck due to display configuration change"
+            fi
+        fi
+        
         # Get currently focused app and window position
         local app_info=$(get_focused_app_and_window)
         IFS='|' read -r current_app window_pos <<< "$app_info"
@@ -440,6 +539,21 @@ monitor_and_dim() {
         
         # Debug: Show detection result
         echo "DEBUG: Detected display: $current_display"
+        
+        # Validate that the detected display is still available
+        local display_found=false
+        for available_display in "${available_displays[@]}"; do
+            if [[ "$current_display" == "$available_display" ]]; then
+                display_found=true
+                break
+            fi
+        done
+        
+        # If detected display is not available, default to first available display
+        if [[ "$display_found" == false ]]; then
+            echo "⚠️  Detected display $current_display is not available. Using first available display."
+            current_display=${available_displays[0]}
+        fi
         
         # Only update if display focus changed
         if [[ "$current_display" != "$last_focused_display" ]]; then
@@ -461,6 +575,9 @@ monitor_and_dim() {
             
             last_focused_display=$current_display
         fi
+        
+        # Increment display check counter
+        display_check_counter=$((display_check_counter + 1))
         
         sleep $CHECK_INTERVAL
     done
